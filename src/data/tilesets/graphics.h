@@ -1634,3 +1634,41 @@ const u16 gTilesetPalettes_UnionRoom[][16] =
 };
 
 const u32 gTilesetTiles_UnionRoom[] = INCBIN_U32("data/tilesets/secondary/union_room/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Main[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/main/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/main/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/main/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/main/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/main/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/main/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/main/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/main/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/main/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/main/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/main/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/main/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/main/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Main[] = INCBIN_U32("data/tilesets/primary/main/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Springwood[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/springwood/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/springwood/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/springwood/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/springwood/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/springwood/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/springwood/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/springwood/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/springwood/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/springwood/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/springwood/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/springwood/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/springwood/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/springwood/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Springwood[] = INCBIN_U32("data/tilesets/secondary/springwood/tiles.4bpp.lz");
