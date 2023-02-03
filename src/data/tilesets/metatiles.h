@@ -213,3 +213,9 @@ const u16 gMetatileAttributes_Main[] = INCBIN_U16("data/tilesets/primary/main/me
 
 const u16 gMetatiles_Springwood[] = INCBIN_U16("data/tilesets/secondary/springwood/metatiles.bin");
 const u16 gMetatileAttributes_Springwood[] = INCBIN_U16("data/tilesets/secondary/springwood/metatile_attributes.bin");
+
+const u16 gMetatiles_Indoors[] = INCBIN_U16("data/tilesets/primary/indoors/metatiles.bin");
+const u16 gMetatileAttributes_Indoors[] = INCBIN_U16("data/tilesets/primary/indoors/metatile_attributes.bin");
+
+const u16 gMetatiles_PlayerHouse[] = INCBIN_U16("data/tilesets/secondary/player_house/metatiles.bin");
+const u16 gMetatileAttributes_PlayerHouse[] = INCBIN_U16("data/tilesets/secondary/player_house/metatile_attributes.bin");

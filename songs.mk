@@ -1267,4 +1267,4 @@ $(MID_SUBDIR)/mus_springwood_lake.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -V090
 
 $(MID_SUBDIR)/mus_vs_trainer_main.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -V080 -P1
+	$(MID) $< $@ -E -R$(STD_REVERB) -G191 -V100 -P1
