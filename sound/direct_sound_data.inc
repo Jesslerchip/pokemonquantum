@@ -4602,3 +4602,6 @@ DirectSoundWaveData_sd90_classical_whistle::
 	.align 2
 DirectSoundWaveData_sd90_enhanced_delay_shaku::
 	.incbin "sound/direct_sound_samples/sd90_enhanced_delay_shaku.bin"
+
+DirectSoundWaveData_clarinet72::
+	.incbin "sound/direct_sound_samples/clarinet72.bin"
