@@ -173,7 +173,7 @@ PlayersHouse_1F_Movement_SetTime:
 PlayersHouse_2F_Movement_MomEntersMale: @ 8292850
 	delay_8
 	walk_down
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	delay_16
 	delay_8
 	walk_left
@@ -188,7 +188,7 @@ PlayersHouse_2F_Movement_MomExitsMale: @ 8292857
 PlayersHouse_2F_Movement_MomEntersFemale: @ 829285B
 	delay_8
 	walk_down
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	delay_16
 	delay_8
 	walk_right
@@ -282,7 +282,7 @@ PlayersHouse_1F_Movement_MomApproachDadMale: @ 8292989
 	walk_right
 	walk_right
 	walk_down
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	step_end
 
 PlayersHouse_1F_Movement_MomApproachDadFemale: @ 8292991
@@ -292,7 +292,7 @@ PlayersHouse_1F_Movement_MomApproachDadFemale: @ 8292991
 	walk_left
 	walk_left
 	walk_down
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	step_end
 
 PlayersHouse_1F_Movement_MomApproachPlayerMale: @ 8292999
@@ -304,23 +304,23 @@ PlayersHouse_1F_Movement_MomApproachPlayerFemale: @ 829299B
 	step_end
 
 PlayersHouse_1F_Movement_MomNoticesLatiBroadcastMale: @ 829299D
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	delay_16
 	delay_16
 	delay_16
 	delay_16
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	delay_16
 	delay_16
 	step_end
 
 PlayersHouse_1F_Movement_MomNoticesLatiBroadcastFemale: @ 82929A6
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	delay_16
 	delay_16
 	delay_16
 	delay_16
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	delay_16
 	delay_16
 	step_end
@@ -339,24 +339,24 @@ PlayersHouse_1F_Movement_MomApproachPlayerAfterTVFemale: @ 82929B3
 
 PlayersHouse_1F_Movement_MomMakeRoomToSeeTVMale: @ 82929B7
 	walk_left
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	step_end
 
 PlayersHouse_1F_Movement_MomMakeRoomToSeeTVFemale: @ 82929BA
 	walk_right
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	step_end
 
 PlayersHouse_1F_Movement_MomReturnToSeatMale: @ 82929BD
 	walk_left
 	walk_down
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	step_end
 
 PlayersHouse_1F_Movement_MomReturnToSeatFemale: @ 82929C1
 	walk_right
 	walk_down
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	step_end
 
 PlayersHouse_1F_EventScript_Mom:: @ 82929C5
@@ -718,14 +718,14 @@ PlayersHouse_1F_Movement_PlayerEnterRoomMale: @ 8292DC6
 	walk_down
 	walk_down
 	walk_down
-	walk_in_place_fastest_left
+	walk_in_place_faster_left
 	step_end
 
 PlayersHouse_1F_Movement_MomAndPlayerWatchDadExit: @ 8292DCC
 	delay_8
 	delay_16
 	delay_16
-	walk_in_place_fastest_down
+	walk_in_place_faster_down
 	step_end
 
 PlayersHouse_1F_Movement_PlayerEnterRoomFemale: @ 8292DD1
@@ -733,7 +733,7 @@ PlayersHouse_1F_Movement_PlayerEnterRoomFemale: @ 8292DD1
 	walk_down
 	walk_down
 	walk_down
-	walk_in_place_fastest_right
+	walk_in_place_faster_right
 	step_end
 
 PlayersHouse_1F_Movement_PlayerApproachTVForLatiMale: @ 8292DD7
@@ -742,7 +742,7 @@ PlayersHouse_1F_Movement_PlayerApproachTVForLatiMale: @ 8292DD7
 	walk_left
 	walk_left
 	walk_left
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	step_end
 
 PlayersHouse_1F_Movement_PlayerApproachTVForLatiFemale: @ 8292DDE
@@ -751,7 +751,7 @@ PlayersHouse_1F_Movement_PlayerApproachTVForLatiFemale: @ 8292DDE
 	walk_right
 	walk_right
 	walk_right
-	walk_in_place_fastest_up
+	walk_in_place_faster_up
 	step_end
 
 EventScript_RunningShoesManual:: @ 8292DE5

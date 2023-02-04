@@ -1887,6 +1887,24 @@
     call_if_eq VAR_RESULT, FALSE, \dest
     .endm
 
+	.macro showitemdescription
+		.byte 0xe3
+		.endm
+
+	.macro hideitemdesc
+		.byte 0xe4
+		.endm
+
+	.macro showitemdesc
+		setvar VAR_0x8009, 0
+		showitemdescription
+		.endm
+
+	.macro showberrydesc
+		setvar VAR_0x8009, 1
+		showitemdescription
+		.endm	
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req
