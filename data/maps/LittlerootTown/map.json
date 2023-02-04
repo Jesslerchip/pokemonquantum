@@ -12,7 +12,13 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": [
+    {
+      "map": "MAP_ROUTE101",
+      "offset": 20,
+      "direction": "down"
+    }
+  ],
   "object_events": [
 
   ],
@@ -62,8 +68,16 @@
       "x": 14,
       "y": 21,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "SpringwoodLake_EventScript_SpringrockPathSign"
+    },
+    {
+      "type": "sign",
+      "x": 14,
+      "y": 28,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "SpringwoodLake_EventScript_PlayersHouse"
     },
     {
       "type": "sign",
@@ -71,7 +85,7 @@
       "y": 33,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "SpringwoodLake_EventScript_SpringwoodLakeSign"
     },
     {
       "type": "sign",
@@ -79,15 +93,7 @@
       "y": 40,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
-    },
-    {
-      "type": "sign",
-      "x": 14,
-      "y": 28,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "SpringwoodLake_EventScript_BellasHouse"
     },
     {
       "type": "sign",
@@ -95,7 +101,7 @@
       "y": 44,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "SpringwoodLake_EventScript_SakurasHouse"
     },
     {
       "type": "sign",
@@ -103,7 +109,7 @@
       "y": 54,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "SpringwoodLake_EventScript_SakurasLab"
     }
   ]
 }

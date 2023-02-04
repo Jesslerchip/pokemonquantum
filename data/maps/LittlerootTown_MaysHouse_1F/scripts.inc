@@ -14,8 +14,6 @@ LittlerootTown_MaysHouse_1F_OnLoad:
 	end
 
 LittlerootTown_MaysHouse_1F_EventScript_SetMovingBoxes::
-	setmetatile 5, 4, METATILE_BrendansMaysHouse_MovingBox_Open, TRUE
-	setmetatile 5, 2, METATILE_BrendansMaysHouse_MovingBox_Closed, TRUE
 	return
 
 LittlerootTown_MaysHouse_1F_EventScript_CheckShowShoesManual::
@@ -24,7 +22,6 @@ LittlerootTown_MaysHouse_1F_EventScript_CheckShowShoesManual::
 	return
 
 LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual::
-	setmetatile 6, 7, METATILE_BrendansMaysHouse_BookOnTable, TRUE
 	return
 
 LittlerootTown_MaysHouse_1F_OnTransition:
