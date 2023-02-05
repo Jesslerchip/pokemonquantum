@@ -1,37 +1,126 @@
 mapscripts LittlerootTown_MapScripts {}
 
-script SpringwoodLake_EventScript_SpringrockPathSign {
+const FAT_MAN = 2
+
+script SpringwoodPond_EventScript_SpringrockPathSign {
 	lockall
     msgbox("Springrock Path")
     releaseall
 }
 
-script SpringwoodLake_EventScript_PlayersHouse {
+script SpringwoodPond_EventScript_PlayersHouse {
 	lockall
 	msgbox("{PLAYER}'s House")
 	releaseall
 }
 
-script SpringwoodLake_EventScript_SpringwoodLakeSign {
+script SpringwoodPond_EventScript_SpringwoodPondSign {
 	lockall
-	msgbox(format("Springwood Lake\pHome of the famous Professor Sakura and her Research Institute!"))
+	msgbox(format("Springwood Pond\pHome of the famous Professor Sakura and her Research Institute!"))
 	releaseall
 }
 
-script SpringwoodLake_EventScript_BellasHouse {
+script SpringwoodPond_EventScript_BellasHouse {
 	lockall
 	msgbox("Bella's House")
 	releaseall
 }
 
-script SpringwoodLake_EventScript_SakurasHouse {
+script SpringwoodPond_EventScript_SakurasHouse {
 	lockall
 	msgbox("Sakura's House")
 	releaseall
 }
 
-script SpringwoodLake_EventScript_SakurasLab {
+script SpringwoodPond_EventScript_SakurasLab {
 	lockall
 	msgbox(format("Professor Sakura's Research Institute\pAccredited research facility for Pokémon science and technology"))
+	releaseall
+}
+
+script SpringwoodPond_EventScript_WaterMan {
+	lockall
+	faceplayer
+	msgbox(format("I'm studying the water quality of the pond. It's a very important job.\p"
+	"I come here every day to take notes on the Pokémon that live here to help Professor Sakura better understand the life cycle of Water Pokémon."))
+	releaseall
+}
+
+script SpringwoodPond_EventScript_Skitty {
+	lockall
+	msgbox(format("Skitty: Prrr…\pThe Skitty is sleeping. How cute!"))
+	releaseall
+}
+
+script SpringwoodPond_EventScript_WomanOnBench {
+	lockall
+	faceplayer
+	msgbox(format("I love Springwood Pond. Everything about this place is absolutely beautiful!\p It's a long ways from Iridium Bluff, but the peaceful scenery is worth it."))
+	releaseall
+}
+
+script SpringwoodPond_EventScript_ManOnBench {
+	lockall
+	faceplayer
+	msgbox(format("Did you know Professor Sakura was once a Pokémon Trainer?\pIt's true! She even traveled with Champion Steven, from the Hoenn region!"))
+	releaseall
+}
+
+script SpringwoodPond_EventScript_WomanInFlowers {
+	lockall
+	faceplayer
+	msgbox(format("I'm doing a study on the way Pokémon interact with their environments.\pProfessor Sakura suggested flowers like these are a vital part "
+	"of a Grass Pokémon's diet.\p I'm putting that to the test!"))
+	releaseall
+}
+
+script SpringwoodPond_EventScript_Scientist {
+	lockall
+	faceplayer
+	msgbox(format("Hey, have you heard about the Rika League?\pWho am I kidding, of course you have! It's only the latest and greatest "
+	"Pokémon League with the strongest Trainers in the world!"))
+	releaseall
+}
+
+script SpringwoodPond_EventScript_CipherPeon1 {
+	lockall
+	faceplayer
+	msgbox(format("Huh?\pHey, we're trying to scheme here. Skedaddle!"))
+	releaseall
+}
+
+script SpringwoodPond_EventScript_CipherPeon2 {
+	lockall
+	faceplayer
+	msgbox(format("Hey, punk! This doesn't concern you!\pButt out, or else!"))
+	releaseall
+}
+
+script SpringwoodPond_EventScript_FatMan {
+	lockall
+	faceplayer
+	if(!flag(FLAG_SYS_POKEMON_GET)) {
+		msgbox(format("Yo, {PLAYER}! Professor Sakura was looking for you.\pDon't keep her waiting!"))
+	}
+	elif(flag(FLAG_SAKURAS_LAB_CHAOS)) {
+		msgbox(format("Yo, {PLAYER}! I just saw some guy make off with a hunk of metal.\pSeemed pretty important. They went down Route 1, if you're looking for them."))
+	}
+	else {
+		msgbox(format("Yo, {PLAYER}! Pokémon Trainers in Rika use all sorts of gadgets to teach Pokémon moves and unlock special powers.\pThe power of science is amazing!"))
+	}
+	releaseall
+}
+
+script SpringwoodPond_EventScript_SakuraNeedsYou {
+	lockall
+	applymovement(FAT_MAN, Common_Movement_JumpInPlaceDown)
+	waitmovement(0)
+	applymovement(FAT_MAN, Common_Movement_JumpInPlaceDown)
+	waitmovement(0)
+	msgbox("Yo, {PLAYER}! Where are you going?")
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp)
+	waitmovement(0)
+	msgbox(format("I think Professor Sakura needed your help. You should head into the Research Institute and talk to her."))
 	releaseall
 }

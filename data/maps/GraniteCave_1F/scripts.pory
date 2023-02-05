@@ -1,0 +1,94 @@
+mapscripts GraniteCave_1F_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        call(Common_EventScript_SetupRivalGfxId)
+        end
+    }
+}
+
+const PEON1 = 1
+const PEON2 = 3
+const BELLA = 4
+const SKITTY = 5
+const POOCHYENA = 6
+
+script MtDraco_1F_EventScript_Bella {
+    lockall
+    msgbox(format("Bella: {PLAYER}! You made it!\pI'll hold this one off. You go get that machine back!"))
+    releaseall
+}
+
+script MtDraco_1F_EventScript_Skitty {
+    lockall
+    playmoncry(SPECIES_SKITTY, 0)
+    msgbox(format("Skitty: Skiiii!"))
+    releaseall
+}
+
+script MtDraco_1F_EventScript_Poochyena {
+    lockall
+    playmoncry(SPECIES_POOCHYENA, 0)
+    msgbox(format("Poochyena: Grrrr!"))
+    releaseall
+}
+
+script MtDraco_1F_EventScript_PeonRival {
+    lockall
+    msgbox(format("Come on, Poochyena! We can take this kid!"))
+    releaseall
+}
+
+script MtDraco_1F_EventScript_PeonBattle {
+    lockall
+    faceplayer
+    playbgm(MUS_ENCOUNTER_MAGMA, 0)
+    msgbox(format("Ha! You came all the way in here for that tech we stole?\pI hate to burst your bubble, but it's "
+    "not here. We already sent it off to our base with our Corviknite.\pBut since you came all this way, I might as "
+    "well teach you not to mess with Cipher!"))
+    trainerbattle_no_intro(TRAINER_GRUNT_MAGMA_HIDEOUT_1, MtDraco_1F_TextPeonDefeated)
+	goto(MtDraco_1F_EventScript_AfterPeonBattle)
+}
+
+script MtDraco_1F_EventScript_AfterPeonBattle {
+    lockall
+    faceplayer
+    playbgm(MUS_ENCOUNTER_MAGMA, 0)
+    msgbox(format("Tch! You'll regret messing with Cipher. Our entire organization will be notified about you!"))
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    playse(SE_EXIT)
+    fadedefaultbgm
+    removeobject(PEON1)
+    removeobject(PEON2)
+    removeobject(SKITTY)
+    removeobject(POOCHYENA)
+    applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+    waitmovement(0)
+    fadescreen(FADE_FROM_BLACK)
+    addobject(BELLA)
+    applymovement(BELLA, MtDraco_1F_Movement_BellaApproach)
+    waitmovement(0)
+    msgbox(format("Bella: We did it, {PLAYER}! It's too bad they got the device, though.\pWe should head back to Prof. Sakura. I'm sure she'll want to hear from us."))
+    completesubquest(QUEST_HELPING_THE_PROFESSOR, SUB_QUEST_EMPTY_HANDED)
+    questmenu(QUEST_MENU_SET_REWARD, QUEST_HELPING_THE_PROFESSOR)
+    questmenu(QUEST_MENU_BUFFER_QUEST_NAME, QUEST_HELPING_THE_PROFESSOR)
+    call(QuestUpdated)
+    fadescreen(FADE_TO_BLACK)
+    playse(SE_EXIT)
+    setflag(FLAG_HIDE_MT_DRACO_1F_OBJECTS)
+    clearflag(FLAG_SAKURAS_LAB_CHAOS)
+    setvar(VAR_LITTLEROOT_INTRO_STATE, 5)
+    removeobject(BELLA)
+    fadescreen(FADE_FROM_BLACK)
+    releaseall
+}
+
+movement MtDraco_1F_Movement_BellaApproach {
+    walk_fast_right * 6
+    walk_fast_up
+    walk_fast_right * 8
+    walk_in_place_fast_right
+}
+
+text MtDraco_1F_TextPeonDefeated {
+    format("What? Beat by a stupid kid?")
+}

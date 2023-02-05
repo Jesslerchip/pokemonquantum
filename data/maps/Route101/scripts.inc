@@ -1,303 +1,128 @@
-.set LOCALID_BIRCH, 2
-.set LOCALID_ZIGZAGOON, 4
-
 Route101_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, Route101_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route101_OnFrame
 	.byte 0
 
-Route101_OnTransition:
-	call ProfBirch_EventScript_UpdateLocation
-	end
 
-Route101_OnFrame:
-	map_script_2 VAR_ROUTE101_STATE, 0, Route101_EventScript_HideMapNamePopup
-	.2byte 0
-
-Route101_EventScript_HideMapNamePopup::
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-	setvar VAR_ROUTE101_STATE, 1
-	end
-
-Route101_EventScript_StartBirchRescue::
+Route1_EventScript_RouteSign::
 	lockall
-	playbgm MUS_HELP, TRUE
-	msgbox Route101_Text_HelpMe, MSGBOX_DEFAULT
-	closemessage
-	setobjectxy LOCALID_BIRCH, 0, 15
-	setobjectxy LOCALID_ZIGZAGOON, 0, 16
-	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_EnterScene
-	applymovement LOCALID_BIRCH, Route101_Movement_BirchRunAway1
-	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonChase1
-	waitmovement 0
-	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonChaseInCircles
-	applymovement LOCALID_BIRCH, Route101_Movement_BirchRunInCircles
-	waitmovement 0
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonFaceBirch
-	applymovement LOCALID_BIRCH, Route101_Movement_BirchFaceZigzagoon
-	waitmovement 0
-	msgbox Route101_Text_PleaseHelp, MSGBOX_DEFAULT
-	closemessage
-	setvar VAR_ROUTE101_STATE, 2
+	msgbox Route1_EventScript_RouteSign_Text_0
 	releaseall
-	end
+	return
 
-Route101_EventScript_PreventExitSouth::
+
+Route1_EventScript_CaveSign::
 	lockall
-	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitSouth
-	waitmovement 0
+	msgbox Route1_EventScript_CaveSign_Text_0
 	releaseall
-	end
+	return
 
-Route101_EventScript_PreventExitWest::
+
+Route1_EventScript_StatsGuy::
 	lockall
-	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitWest
-	waitmovement 0
-	releaseall
-	end
-
-Route101_EventScript_PreventExitNorth::
-	lockall
-	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitNorth
-	waitmovement 0
-	releaseall
-	end
-
-Route101_Movement_PreventExitSouth:
-	walk_up
-	step_end
-
-Route101_Movement_PreventExitWest:
-	walk_right
-	step_end
-
-Route101_Movement_PreventExitNorth:
-	walk_down
-	step_end
-
-Route101_Movement_ZigzagoonChaseInCircles:
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_down
-	walk_fast_down
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_down
-	walk_fast_down
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_down
-	walk_fast_down
-	walk_fast_left
-	walk_fast_left
-	step_end
-
-Route101_Movement_ZigzagoonChase1:
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	step_end
-
-@ Leftover data? This command is unused.
-	step_end
-
-Route101_Movement_ZigzagoonFaceBirch:
-	walk_in_place_fast_left
-	walk_in_place_fast_left
-	walk_in_place_fast_left
-	walk_in_place_fast_left
-	step_end
-
-Route101_Movement_EnterScene:
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_in_place_faster_left
-	step_end
-
-Route101_Movement_BirchRunInCircles:
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_down
-	walk_fast_down
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_down
-	walk_fast_down
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_down
-	walk_fast_down
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	step_end
-
-Route101_Movement_BirchRunAway1:
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	walk_fast_up
-	step_end
-
-@ Leftover data? This command is unused.
-	step_end
-
-Route101_Movement_BirchFaceZigzagoon:
-	walk_in_place_fast_right
-	walk_in_place_fast_right
-	walk_in_place_fast_right
-	walk_in_place_fast_right
-	step_end
-
-Route101_Movement_Unused1:
-	walk_up
-	walk_up
-	step_end
-
-Route101_Movement_Unused2:
-	walk_up
-	walk_left
-	walk_up
-	step_end
-
-Route101_EventScript_Youngster::
-	msgbox Route101_Text_TakeTiredPokemonToPokeCenter, MSGBOX_NPC
-	end
-
-Route101_EventScript_Boy::
-	msgbox Route101_Text_WildPokemonInTallGrass, MSGBOX_NPC
-	end
-
-Route101_EventScript_RouteSign::
-	msgbox Route101_Text_RouteSign, MSGBOX_SIGN
-	end
-
-Route101_EventScript_BirchsBag::
-	lock
 	faceplayer
-	setflag FLAG_SYS_POKEMON_GET
-	setflag FLAG_SYS_QUEST_MENU_GET
-	setflag FLAG_RESCUED_BIRCH
-	fadescreen FADE_TO_BLACK
-	removeobject LOCALID_ZIGZAGOON
-	setobjectxy OBJ_EVENT_ID_PLAYER, 6, 13
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	special ChooseStarter
-	waitstate
-	applymovement LOCALID_BIRCH, Route101_Movement_BirchApproachPlayer
-	waitmovement 0
-	msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
-	special HealPlayerParty
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
-	setvar VAR_BIRCH_LAB_STATE, 2
-	setvar VAR_ROUTE101_STATE, 3
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, Route101_EventScript_HideMayInBedroom
-	call_if_eq VAR_RESULT, FEMALE, Route101_EventScript_HideBrendanInBedroom
-	warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 6, 5
-	waitstate
-	release
-	end
-
-Route101_EventScript_HideMayInBedroom::
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+	msgbox Route1_EventScript_StatsGuy_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq Route1_EventScript_StatsGuy_2
+	msgbox Route1_EventScript_StatsGuy_Text_2
+Route1_EventScript_StatsGuy_1:
+	releaseall
 	return
 
-Route101_EventScript_HideBrendanInBedroom::
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
+Route1_EventScript_StatsGuy_2:
+	msgbox Route1_EventScript_StatsGuy_Text_1
+	goto Route1_EventScript_StatsGuy_1
+
+
+Route1_EventScript_Woman::
+	lockall
+	faceplayer
+	msgbox Route1_EventScript_Woman_Text_0
+	releaseall
 	return
 
-Route101_Movement_BirchApproachPlayer:
-	walk_right
-	step_end
 
-Route101_Text_HelpMe:
-	.string "H-help me!$"
+Route1_EventScript_Youngster::
+	lockall
+	faceplayer
+	msgbox Route1_EventScript_Youngster_Text_0
+	releaseall
+	return
 
-Route101_Text_PleaseHelp:
-	.string "Hello! You over there!\n"
-	.string "Please! Help!\p"
-	.string "In my BAG!\n"
-	.string "There's a POKé BALL!$"
 
-Route101_Text_DontLeaveMe:
-	.string "Wh-Where are you going?!\n"
-	.string "Don't leave me like this!$"
+Route1_EventScript_RouteSign_Text_0:
+	.string "Route 1\p"
+	.string "{UP_ARROW}Springwood Pond\n"
+	.string "{RIGHT_ARROW}Glacial Bay$"
 
-Route101_Text_YouSavedMe:
-	.string "PROF. BIRCH: Whew…\p"
-	.string "I was in the tall grass studying wild\n"
-	.string "POKéMON when I was jumped.\p"
-	.string "You saved me.\n"
-	.string "Thanks a lot!\p"
-	.string "Oh?\p"
-	.string "Hi, you're {PLAYER}{KUN}!\p"
-	.string "This is not the place to chat, so come\n"
-	.string "by my POKéMON LAB later, okay?$"
+Route1_EventScript_CaveSign_Text_0:
+	.string "Mt. Draco$"
 
-Route101_Text_TakeTiredPokemonToPokeCenter:
-	.string "If POKéMON get tired, take them to\n"
-	.string "a POKéMON CENTER.\p"
-	.string "There's a POKéMON CENTER in OLDALE\n"
-	.string "TOWN right close by.$"
+Route1_EventScript_StatsGuy_Text_0:
+	.string "Oh, hi! Did you want to hear about the\n"
+	.string "different Pokémon stats?$"
 
-Route101_Text_WildPokemonInTallGrass:
-	.string "Wild POKéMON will jump out at you in\n"
-	.string "tall grass.\p"
-	.string "If you want to catch POKéMON, you have\n"
-	.string "to go into the tall grass and search.$"
+Route1_EventScript_StatsGuy_Text_1:
+	.string "Okay! First, every Pokémon species has\n"
+	.string "a set of base stats. These are HP,\l"
+	.string "Attack, Defense, Special Attack,\l"
+	.string "Special Defense, and Speed. The\l"
+	.string "specific values are unique to each\l"
+	.string "species, but all Pokémon of the same\l"
+	.string "species have the same base stats.\p"
+	.string "Each Pokémon is also born with IVs, or\n"
+	.string "Independent Values. These are fixed,\l"
+	.string "but can be changed with certain items.\l"
+	.string "Each IV can go up to 31, so try to get\l"
+	.string "31 on all a Pokémon's stats to unlock\l"
+	.string "their true potential.\p"
+	.string "Finally, Pokémon have EVs, or Effort\n"
+	.string "Values. These are gained by defeating\l"
+	.string "certain Pokémon, or consuming special\l"
+	.string "items. A Pokémon can only have a total\l"
+	.string "of 510 EVs, and only 252 per stat.\p"
+	.string "Working with your Pokémon to train\n"
+	.string "these is the best way to make them\l"
+	.string "stronger, so do your best to watch\l"
+	.string "their stats carefully from the Summary\l"
+	.string "Screen!\p"
+	.string "A Pokémon's Nature also effects stats,\n"
+	.string "by increasing one and decreasing\l"
+	.string "another. Try to pick beneficial Natures\l"
+	.string "to maximize your capabilities and\l"
+	.string "defeat all of your opponents!\p"
+	.string "Of course, a Pokémon's stats go up if\n"
+	.string "you level them, too- but who doesn't\l"
+	.string "like getting obsessed with insanely\l"
+	.string "fine details?\p"
+	.string "I know I've been talking a lot, but this\n"
+	.string "stuff is important if you plan to beat\l"
+	.string "Trainers. Of course, I suppose you\l"
+	.string "could also just train Pokémon casually\l"
+	.string "too, but all the cool kids know about\l"
+	.string "stats!$"
 
-Route101_Text_RouteSign:
-	.string "ROUTE 101\n"
-	.string "{UP_ARROW} OLDALE TOWN$"
+Route1_EventScript_StatsGuy_Text_2:
+	.string "Yeah, it's pretty complicated. You're\n"
+	.string "probably not smart enough to\l"
+	.string "understand it like real Trainers do.$"
 
+Route1_EventScript_Woman_Text_0:
+	.string "I'm looking for Pokémon in the tall\n"
+	.string "grass.\p"
+	.string "Some are more rare than others, you\n"
+	.string "know. I really want a Skitty, but\l"
+	.string "they're super hard to find!$"
+
+Route1_EventScript_Youngster_Text_0:
+	.string "Hi! I like shorts!\p"
+	.string "They're actually quite durable, and\n"
+	.string "they really help in warm weather. Long\l"
+	.string "pants are great if you're trying to\l"
+	.string "crawl through all that tall grass, but\l"
+	.string "if you just want to enjoy a nice,\l"
+	.string "summer day? I think shorts are\l"
+	.string "honestly the best pick. Really, you can\l"
+	.string "wear whatever you'd like- I enjoy\l"
+	.string "shorts, but anyone is free to choose\l"
+	.string "any outfit they want! All I'm saying is,\l"
+	.string "be yourself- but shorts will help you\l"
+	.string "be your best self.$"

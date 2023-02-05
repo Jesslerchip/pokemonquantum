@@ -394,35 +394,66 @@ RivalsHouse_2F_Text_BrendanWhereShouldIGoNext: @ 81F9BE7
 	.string "catching POKéMON, I can pitch you a\l"
 	.string "battle if you'd like.$"
 
-SpringwoodLake_EventScript_PlayersHouse_Clock1::
+SpringwoodPond_EventScript_PlayersHouse_Clock1::
 	lockall
-	msgbox SpringwoodLake_EventScript_PlayersHouse_Clock1_Text_0
-	applymovement OBJ_EVENT_ID_PLAYER, SpringwoodLake_Movement_Clock1
+	msgbox SpringwoodPond_EventScript_PlayersHouse_Clock1_Text_0
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, SpringwoodPond_Movement_Clock1
 	waitmovement 0
-	goto PlayersHouse_2F_EventScript_WallClock
+	setvar VAR_0x8004, MALE
+	goto_if_set FLAG_SET_WALL_CLOCK, SpringwoodPond_EventScript_PlayersHouse_Clock1_2
+	msgbox PlayersHouse_2F_Text_ClockIsStopped
+	call PlayersHouse_2F_EventScript_SetWallClock
+	delay 30
+	setvar VAR_LITTLEROOT_INTRO_STATE, 1
+	setflag FLAG_SET_WALL_CLOCK
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox PlayersHouse_2F_Text_GoDownstairs
+SpringwoodPond_EventScript_PlayersHouse_Clock1_1:
+	releaseall
+	end
+
+SpringwoodPond_EventScript_PlayersHouse_Clock1_2:
+	goto PlayersHouse_2F_EventScript_CheckWallClock
+	goto SpringwoodPond_EventScript_PlayersHouse_Clock1_1
+
+
+SpringwoodPond_EventScript_PlayersHouse_Clock2::
+	lockall
+	goto_if_set FLAG_SET_WALL_CLOCK, SpringwoodPond_EventScript_PlayersHouse_Clock2_2
+	msgbox PlayersHouse_2F_Text_ClockIsStopped
+	call PlayersHouse_2F_EventScript_SetWallClock
+	delay 30
+	setvar VAR_LITTLEROOT_INTRO_STATE, 1
+	setflag FLAG_SET_WALL_CLOCK
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	msgbox PlayersHouse_2F_Text_GoDownstairs
+SpringwoodPond_EventScript_PlayersHouse_Clock2_1:
+	releaseall
+	end
+
+SpringwoodPond_EventScript_PlayersHouse_Clock2_2:
+	goto PlayersHouse_2F_EventScript_CheckWallClock
+	goto SpringwoodPond_EventScript_PlayersHouse_Clock2_1
+
+
+SpringwoodPond_EventScript_PlayersHouse_Laptop::
+	lockall
+	msgbox SpringwoodPond_EventScript_PlayersHouse_Laptop_Text_0
+	releaseall
 	return
 
 
-SpringwoodLake_EventScript_PlayersHouse_Clock2::
-	lockall
-	msgbox SpringwoodLake_EventScript_PlayersHouse_Clock1_Text_0
-	applymovement OBJ_EVENT_ID_PLAYER, SpringwoodLake_Movement_Clock2
-	waitmovement 0
-	goto PlayersHouse_2F_EventScript_WallClock
-	return
-
-
-SpringwoodLake_Movement_Clock1:
+SpringwoodPond_Movement_Clock1:
 	walk_left
 	walk_in_place_fast_up
 	step_end
 
-SpringwoodLake_Movement_Clock2:
-	walk_left
-	walk_up
-	walk_in_place_fast_up
-	step_end
-
-SpringwoodLake_EventScript_PlayersHouse_Clock1_Text_0:
+SpringwoodPond_EventScript_PlayersHouse_Clock1_Text_0:
 	.string "Mom: Hey, {PLAYER}! Could you check\n"
 	.string "the time for me?$"
+
+SpringwoodPond_EventScript_PlayersHouse_Laptop_Text_0:
+	.string "The laptop has a message on the screen.\p{COLOR GREEN}“Thanks for playing!”$"

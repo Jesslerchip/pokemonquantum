@@ -1,0 +1,50 @@
+mapscripts Route101_MapScripts {}
+
+script Route1_EventScript_RouteSign{
+    lockall
+    msgbox(format("Route 1\p{UP_ARROW}Springwood Pond\n{RIGHT_ARROW}Glacial Bay"))
+    releaseall
+}
+
+script Route1_EventScript_CaveSign{
+    lockall
+    msgbox(format("Mt. Draco"))
+    releaseall
+}
+
+script Route1_EventScript_StatsGuy {
+    lockall
+    faceplayer
+    msgbox(format("Oh, hi! Did you want to hear about the different Pokémon stats?"), MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES) {
+        msgbox(format("Okay! First, every Pokémon species has a set of base stats. These are HP, Attack, Defense, Special Attack, Special Defense, and Speed. "
+        "The specific values are unique to each species, but all Pokémon of the same species have the same base stats.\pEach Pokémon is also born with IVs, or "
+        "Independent Values. These are fixed, but can be changed with certain items. Each IV can go up to 31, so try to get 31 on all a Pokémon's stats to unlock "
+        "their true potential. \pFinally, Pokémon have EVs, or Effort Values. These are gained by defeating certain Pokémon, or consuming special items. A Pokémon "
+        "can only have a total of 510 EVs, and only 252 per stat.\pWorking with your Pokémon to train these is the best way to make them stronger, so do your best "
+        "to watch their stats carefully from the Summary Screen!\pA Pokémon's Nature also effects stats, by increasing one and decreasing another. Try to pick "
+        "beneficial Natures to maximize your capabilities and defeat all of your opponents!\pOf course, a Pokémon's stats go up if you level them, too- but who "
+        "doesn't like getting obsessed with insanely fine details?\pI know I've been talking a lot, but this stuff is important if you plan to beat Trainers. Of course, "
+        "I suppose you could also just train Pokémon casually too, but all the cool kids know about stats!"))
+    }
+    else {
+        msgbox(format("Yeah, it's pretty complicated. You're probably not smart enough to understand it like real Trainers do."))
+    }
+    releaseall
+}
+
+script Route1_EventScript_Woman {
+    lockall
+    faceplayer
+    msgbox(format("I'm looking for Pokémon in the tall grass.\pSome are more rare than others, you know. I really want a Skitty, but they're super hard to find!"))
+    releaseall
+}
+
+script Route1_EventScript_Youngster {
+    lockall
+    faceplayer
+    msgbox(format("Hi! I like shorts!\pThey're actually quite durable, and they really help in warm weather. Long pants are great if you're trying to crawl through "
+    "all that tall grass, but if you just want to enjoy a nice, summer day? I think shorts are honestly the best pick. Really, you can wear whatever you'd like- I enjoy "
+    "shorts, but anyone is free to choose any outfit they want! All I'm saying is, be yourself- but shorts will help you be your best self."))
+    releaseall
+}

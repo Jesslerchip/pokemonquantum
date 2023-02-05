@@ -575,9 +575,9 @@
       "id": "LAYOUT_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB",
       "name": "LittlerootTown_ProfessorBirchsLab_Layout",
       "width": 13,
-      "height": 13,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_Lab",
+      "height": 14,
+      "primary_tileset": "gTileset_Indoors",
+      "secondary_tileset": "gTileset_SakurasLab",
       "border_filepath": "data/layouts/LittlerootTown_ProfessorBirchsLab/border.bin",
       "blockdata_filepath": "data/layouts/LittlerootTown_ProfessorBirchsLab/map.bin"
     },
@@ -1316,8 +1316,8 @@
       "name": "GraniteCave_1F_Layout",
       "width": 42,
       "height": 15,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Cave",
+      "primary_tileset": "gTileset_Main",
+      "secondary_tileset": "gTileset_NewCave",
       "border_filepath": "data/layouts/GraniteCave_1F/border.bin",
       "blockdata_filepath": "data/layouts/GraniteCave_1F/map.bin"
     },
@@ -4412,14 +4412,14 @@
       "blockdata_filepath": "data/layouts/SootopolisCity_MysteryEventsHouse_1F_StairsUnblocked/map.bin"
     },
     {
-      "id": "LAYOUT_SPRINGWOOD_LAKE_EXTRA_HOUSE",
-      "name": "SpringwoodLake_ExtraHouse_Layout",
-      "width": 20,
-      "height": 20,
-      "primary_tileset": "gTileset_General",
-      "secondary_tileset": "gTileset_Petalburg",
-      "border_filepath": "data/layouts/SpringwoodLake_ExtraHouse/border.bin",
-      "blockdata_filepath": "data/layouts/SpringwoodLake_ExtraHouse/map.bin"
+      "id": "LAYOUT_SPRINGWOOD_POND_EXTRA_HOUSE",
+      "name": "SpringwoodPond_ExtraHouse_Layout",
+      "width": 12,
+      "height": 10,
+      "primary_tileset": "gTileset_Indoors",
+      "secondary_tileset": "gTileset_PlayerHouse",
+      "border_filepath": "data/layouts/SpringwoodPond_ExtraHouse/border.bin",
+      "blockdata_filepath": "data/layouts/SpringwoodPond_ExtraHouse/map.bin"
     }
   ]
 }

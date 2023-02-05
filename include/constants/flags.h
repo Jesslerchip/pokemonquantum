@@ -41,11 +41,11 @@
 #define FLAG_TEMP_1F     (TEMP_FLAGS_START + 0x1F)
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 
-#define FLAG_UNUSED_0x020    0x20 // Unused Flag
-#define FLAG_UNUSED_0x021    0x21 // Unused Flag
-#define FLAG_UNUSED_0x022    0x22 // Unused Flag
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
+#define FLAG_HIDE_SPRINGWOOD_POND_CIPHER_PEON_LAB    0x20 // Used to hide cipher peon in Sakura's lab
+#define FLAG_SAKURAS_LAB_CHAOS    0x21 // Used during the intro sequence after device is stolen
+#define FLAG_HIDE_SAKURAS_LAB_RIVAL    0x22 // Used to hide rival in sakuras lab
+#define FLAG_HIDE_MT_DRACO_1F_OBJECTS    0x23 // Used to hide everything after beating peons in mt draco
+#define FLAG_HIDE_SPRINGWOOD_POND_SKITTY    0x24 // Used to hide the skitty in springwood pond
 #define FLAG_UNUSED_0x025    0x25 // Unused Flag
 #define FLAG_UNUSED_0x026    0x26 // Unused Flag
 #define FLAG_UNUSED_0x027    0x27 // Unused Flag
@@ -741,7 +741,7 @@
 #define FLAG_UNUSED_0x2BB  0x2BB // Unused Flag
 
 // Event Flags
-#define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC
+#define FLAG_HIDE_SPRINGWOOD_POND_MOM                               0x2BC
 #define FLAG_HIDE_APPRENTICE                                        0x2BD
 #define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE
 #define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF

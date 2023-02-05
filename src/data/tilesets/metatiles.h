@@ -219,3 +219,9 @@ const u16 gMetatileAttributes_Indoors[] = INCBIN_U16("data/tilesets/primary/indo
 
 const u16 gMetatiles_PlayerHouse[] = INCBIN_U16("data/tilesets/secondary/player_house/metatiles.bin");
 const u16 gMetatileAttributes_PlayerHouse[] = INCBIN_U16("data/tilesets/secondary/player_house/metatile_attributes.bin");
+
+const u16 gMetatiles_SakurasLab[] = INCBIN_U16("data/tilesets/secondary/sakuras_lab/metatiles.bin");
+const u16 gMetatileAttributes_SakurasLab[] = INCBIN_U16("data/tilesets/secondary/sakuras_lab/metatile_attributes.bin");
+
+const u16 gMetatiles_NewCave[] = INCBIN_U16("data/tilesets/secondary/new_cave/metatiles.bin");
+const u16 gMetatileAttributes_NewCave[] = INCBIN_U16("data/tilesets/secondary/new_cave/metatile_attributes.bin");

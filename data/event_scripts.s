@@ -578,6 +578,7 @@ gStdScripts_End::
 	.include "data/scripts/trainer_battle.inc"
 	.include "data/scripts/new_game.inc"
 	.include "data/scripts/hall_of_fame.inc"
+	.include "data/scripts/quests.inc"
 
 	.include "data/scripts/debug.inc"
 
@@ -836,6 +837,7 @@ Common_EventScript_PlayerHandedOverTheItem::
 	.include "data/text/mart_clerk.inc"
 	.include "data/text/obtain_item.inc"
 
+
 @ The below and surf.inc could be split into some text/notices.inc
 gText_PokemartSign::
 	.string "“Selected items for your convenience!”\n"
@@ -1061,4 +1063,4 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 
-	.include "data/maps/SpringwoodLake_ExtraHouse/scripts.inc"
+	.include "data/maps/SpringwoodPond_ExtraHouse/scripts.inc"

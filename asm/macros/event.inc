@@ -1765,7 +1765,7 @@
 	questmenu QUEST_MENU_SET_ACTIVE, \quest
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
     bufferstring 1 gText_QuestActive
-	playfanfare MUS_LEVEL_UP 
+	playfanfare MUS_REGISTER_MATCH_CALL
 	msgbox gText_QuestAnnounce, MSGBOX_SIGN
 	waitfanfare
 	.endm
@@ -1777,7 +1777,8 @@
 	questmenu QUEST_MENU_COMPLETE_QUEST, \quest
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
     bufferstring 1 gText_QuestComplete
-	playfanfare MUS_LEVEL_UP 
+	playfanfare MUS_OBTAIN_BADGE
+	special DoDomeConfetti
 	msgbox gText_QuestAnnounce, MSGBOX_SIGN
 	waitfanfare
 	.endm
@@ -1888,11 +1889,11 @@
     .endm
 
 	.macro showitemdescription
-		.byte 0xe3
+		.byte 0xe6
 		.endm
 
 	.macro hideitemdesc
-		.byte 0xe4
+		.byte 0xe7
 		.endm
 
 	.macro showitemdesc

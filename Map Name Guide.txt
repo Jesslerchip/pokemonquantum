@@ -1,1 +1,3 @@
-LittlerootTown: Springwood Lake
+Littleroot Town: Springwood Pond
+Route 101: Route 1
+Granite Cave: Mt. Draco

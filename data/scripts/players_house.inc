@@ -25,18 +25,18 @@ PlayersHouse_1F_EventScript_EnterHouseMovingIn:: @ 8292704
 	closemessage
 	setvar VAR_LITTLEROOT_INTRO_STATE, 4
 	applymovement OBJ_EVENT_ID_PLAYER, PlayersHouse_1F_Movement_PlayerWalkIn
-	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFastestUp
+	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	releaseall
 	end
 
 PlayersHouse_1F_EventScript_MomFacePlayerMovingInMale:: @ 829274D
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	return
 
 PlayersHouse_1F_EventScript_MomFacePlayerMovingInFemale:: @ 8292758
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	return
 
@@ -47,7 +47,7 @@ PlayersHouse_1F_Movement_PlayerWalkIn: @ 8292763
 PlayersHouse_1F_EventScript_MomGoSeeRoom:: @ 8292765
 	msgbox PlayersHouse_1F_Text_ArentYouInterestedInRoom, MSGBOX_DEFAULT
 	closemessage
-	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFastestUp
+	applymovement VAR_0x8004, Common_Movement_WalkInPlaceFasterUp
 	applymovement OBJ_EVENT_ID_PLAYER, PlayersHouse_1F_Movement_MovePlayerAwayFromDoor
 	waitmovement 0
 	releaseall
@@ -93,52 +93,13 @@ PlayersHouse_2F_EventScript_WallClock:: @ 8292799
 	end
 
 PlayersHouse_2F_EventScript_MomComesUpstairsMale:: @ 82927DF
-	setvar VAR_0x8008, LOCALID_MOM_2F
-	addobject VAR_0x8008
-	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomEntersMale
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
-	waitmovement 0
 	msgbox PlayersHouse_2F_Text_HowDoYouLikeYourRoom, MSGBOX_DEFAULT
 	closemessage
-	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomExitsMale
-	waitmovement 0
 	return
 
 PlayersHouse_2F_EventScript_MomComesUpstairsFemale:: @ 829280F
-	setvar VAR_0x8008, LOCALID_MOM_2F
-	addobject VAR_0x8008
-	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomEntersFemale
-	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
-	waitmovement 0
 	msgbox PlayersHouse_2F_Text_HowDoYouLikeYourRoom, MSGBOX_DEFAULT
 	closemessage
-	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomLooksLeft
-	waitmovement 0
-	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomQuestion
-	msgbox PlayersHouse_2F_Text_PokeGear1, MSGBOX_DEFAULT
-	closemessage
-	waitmovement 0
-	playse SE_PIN
-	applymovement VAR_0x8008, Common_Movement_ExclamationMark
-	waitmovement 0
-	msgbox PlayersHouse_2F_Text_PokeGear2, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_0x8008, Common_Movement_FacePlayer
-	waitmovement 0
-	msgbox PlayersHouse_2F_Text_RunningLate, MSGBOX_DEFAULT
-	closemessage
-	special NameRival
-	waitstate
-	msgbox PlayersHouse_2F_Text_RivalName, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_0x8008, Common_Movement_WalkInPlaceFastestRight
-	waitmovement 0
-	msgbox PlayersHouse_2F_Text_IKnowYouWantAPokemon, MSGBOX_DEFAULT
-	closemessage
-	applymovement VAR_0x8008, PlayersHouse_2F_Movement_MomExitsFemale
-	waitmovement 0
 	return
 
 PlayersHouse_2F_Movement_MomLooksLeft:
@@ -206,7 +167,7 @@ PlayersHouse_1F_EventScript_SetWatchedBroadcast:: @ 8292866
 	end
 
 PlayersHouse_1F_EventScript_PetalburgGymReportMale:: @ 829286D
-	applymovement VAR_0x8005, Common_Movement_WalkInPlaceFastestRight
+	applymovement VAR_0x8005, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	call PlayersHouse_1F_EventScript_MomNoticeGymBroadcast
 	applymovement OBJ_EVENT_ID_PLAYER, PlayersHouse_1F_Movement_PlayerApproachTVForGymMale
@@ -219,7 +180,7 @@ PlayersHouse_1F_EventScript_PetalburgGymReportMale:: @ 829286D
 	applymovement OBJ_EVENT_ID_PLAYER, PlayersHouse_1F_Movement_PlayerMoveToTVMale
 	waitmovement 0
 	call PlayersHouse_1F_EventScript_WatchGymBroadcast
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	msgbox PlayersHouse_1F_Text_ItsOverWeMissedHim, MSGBOX_DEFAULT
 	msgbox PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor, MSGBOX_DEFAULT
@@ -231,7 +192,7 @@ PlayersHouse_1F_EventScript_PetalburgGymReportMale:: @ 829286D
 	end
 
 PlayersHouse_1F_EventScript_PetalburgGymReportFemale:: @ 82928DC
-	applymovement VAR_0x8005, Common_Movement_WalkInPlaceFastestLeft
+	applymovement VAR_0x8005, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	call PlayersHouse_1F_EventScript_MomNoticeGymBroadcast
 	applymovement OBJ_EVENT_ID_PLAYER, PlayersHouse_1F_Movement_PlayerApproachTVForGymFemale
@@ -244,7 +205,7 @@ PlayersHouse_1F_EventScript_PetalburgGymReportFemale:: @ 82928DC
 	applymovement OBJ_EVENT_ID_PLAYER, PlayersHouse_1F_Movement_PlayerMoveToTVFemale
 	waitmovement 0
 	call PlayersHouse_1F_EventScript_WatchGymBroadcast
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	msgbox PlayersHouse_1F_Text_ItsOverWeMissedHim, MSGBOX_DEFAULT
 	msgbox PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor, MSGBOX_DEFAULT
@@ -266,7 +227,7 @@ PlayersHouse_1F_EventScript_MomNoticeGymBroadcast:: @ 829294B
 	return
 
 PlayersHouse_1F_EventScript_WatchGymBroadcast:: @ 829296C
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox PlayersHouse_1F_Text_ReportFromPetalburgGym, MSGBOX_DEFAULT
 	fadedefaultbgm
@@ -632,28 +593,28 @@ PlayersHouse_1F_EventScript_PlayerEnterRoomFemale:: @ 8292D13
 PlayersHouse_1F_EventScript_PlayerApproachTVForLatiMale:: @ 8292D1E
 	applymovement OBJ_EVENT_ID_PLAYER, PlayersHouse_1F_Movement_PlayerApproachTVForLatiMale
 	waitmovement 0
-	applymovement VAR_0x800A, Common_Movement_WalkInPlaceFastestLeft
+	applymovement VAR_0x800A, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	return
 
 PlayersHouse_1F_EventScript_PlayerApproachTVForLatiFemale:: @ 8292D33
 	applymovement OBJ_EVENT_ID_PLAYER, PlayersHouse_1F_Movement_PlayerApproachTVForLatiFemale
 	waitmovement 0
-	applymovement VAR_0x800A, Common_Movement_WalkInPlaceFastestRight
+	applymovement VAR_0x800A, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	return
 
 PlayersHouse_1F_EventScript_MomApproachPlayerMale:: @ 8292D48
 	applymovement VAR_0x800A, PlayersHouse_1F_Movement_MomApproachPlayerMale
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	return
 
 PlayersHouse_1F_EventScript_MomApproachPlayerFemale:: @ 8292D5D
 	applymovement VAR_0x800A, PlayersHouse_1F_Movement_MomApproachPlayerFemale
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	return
 
@@ -670,14 +631,14 @@ PlayersHouse_1F_EventScript_MomNoticesLatiBroadcastFemale:: @ 8292D7D
 PlayersHouse_1F_EventScript_MomApproachPlayerAfterTVMale:: @ 8292D88
 	applymovement VAR_0x800A, PlayersHouse_1F_Movement_MomApproachPlayerAfterTVMale
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestRight
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	return
 
 PlayersHouse_1F_EventScript_MomApproachPlayerAfterTVFemale:: @ 8292D9D
 	applymovement VAR_0x800A, PlayersHouse_1F_Movement_MomApproachPlayerAfterTVFemale
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFastestLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	return
 
@@ -761,3 +722,225 @@ EventScript_RunningShoesManual:: @ 8292DE5
 PlayersHouse_2F_Text_CheckTheTime:
 	.string "Mom: Hey, {PLAYER}! Could you\n"
 	.string "check the time for me?$"
+
+PlayersHouse_2F_Text_ClockIsStopped: @ 81F8668
+	.string "{PLAYER} glanced at the clock.\n"
+	.string "What time is it?$"
+
+PlayersHouse_2F_Text_GoDownstairs:
+	.string "Mom: Oh no! I'm running late!\p"
+	.string "Hurry downstairs so we can talk before\n"
+	.string "I leave, okay {PLAYER}?$"
+
+PlayersHouse_2F_EventScript_Notebook:: @ 81F8656
+	msgbox PlayersHouse_2F_Text_Notebook, MSGBOX_SIGN
+	end
+
+PlayersHouse_2F_EventScript_GameCube:: @ 81F865F
+	msgbox PlayersHouse_2F_Text_ItsAGameCube, MSGBOX_SIGN
+	end
+
+PlayersHouse_2F_Text_HowDoYouLikeYourRoom: @ 81F869A
+	.string "Mom: Don't worry about it, {PLAYER}.\n"
+	.string "I can check the time on my Rotom Phone.$"
+
+PlayersHouse_2F_Text_PokeGear1:
+	.string ". . . . . . . . . . . . . . . . . . .$"
+
+PlayersHouse_2F_Text_PokeGear2:
+	.string "Mom: Oh no! I'm running late!$"
+
+PlayersHouse_2F_Text_RunningLate:
+	.string "Mom: Sorry, {PLAYER}. I need to go.\n"
+	.string "I'll miss my flight to Sinnoh!\p"
+	.string "Maybe you can hang out with that new kid!\n"
+	.string "You know, the neighbor, from Galar. They\l"
+	.string "were around your age, {PLAYER}.\p"
+	.string "What was their name again?$"
+
+PlayersHouse_2F_Text_RivalName:
+	.string "Mom: Oh, that's right! {RIVAL}!\p"
+	.string "Okay honey, be good! Really, do try\n"
+	.string "to make friends with {RIVAL}, okay?\p"
+	.string "I'll be back in a few days.\p"
+	.string "Sakura will be in charge while I'm gone.\n"
+	.string "She's probably still at her lab.\p"
+	.string "She'll come over when she's done working\n"
+	.string "this evening, okay? Don't wander off!\p"
+	.string "Springrock Path is dangerous alone.$"
+
+PlayersHouse_2F_Text_IKnowYouWantAPokemon:
+	.string "Mom: Oh, {PLAYER}, I know you really\n"
+	.string "want a Pokémon of your own, but...\p"
+	.string "Well, we can talk about it when I'm\n"
+	.string "back from Sinnoh, okay? Prof. Rowan will\l"
+	.string "get annoyed if I don't make it on time.\p"
+	.string "...!\p"
+	.string "I forgot! I have something to give you\n"
+	.string "before I leave! Come downstairs with me!$"
+
+PlayersHouse_2F_Text_Notebook: @ 81F877F
+	.string "{PLAYER} flipped open the notebook.\p"
+	.string "Dear {PLAYER}...\p"
+	.string "Thanks for playing Pokémon Quantum!\n"
+	.string "--Cappuccino$"
+
+Common_Text_LookCloserAtMap: @ 81F8820
+	.string "Hey, it's a map of Rika!$"
+
+PlayersHouse_2F_Text_ItsAGameCube: @ 81F884F
+	.string "It's a Nintendo Gamecube.\p"
+	.string "It was a great console, but it's\n"
+	.string "starting to collect a lot of dust.$"
+
+PlayersHouse_1F_Text_IsntItNiceInHere:
+	.string "MOM: See, {PLAYER}?\n"
+	.string "Isn't it nice in here, too?$"
+
+PlayersHouse_1F_Text_MoversPokemonGoSetClock:
+	.string "The mover's POKéMON do all the work\n"
+	.string "of moving us in and cleaning up after.\l"
+	.string "This is so convenient!\p"
+	.string "{PLAYER}, your room is upstairs.\n"
+	.string "Go check it out, dear!\p"
+	.string "DAD bought you a new clock to mark\n"
+	.string "our move here.\l"
+	.string "Don't forget to set it!$"
+
+PlayersHouse_1F_Text_ArentYouInterestedInRoom:
+	.string "MOM: Well, {PLAYER}?\p"
+	.string "Aren't you interested in seeing your\n"
+	.string "very own room?$"
+
+PlayersHouse_1F_Text_GoSetTheClock:
+	.string "MOM: {PLAYER}.\p"
+	.string "Go set the clock in your room, honey.$"
+
+PlayersHouse_1F_Text_OhComeQuickly:
+	.string "MOM: Oh! {PLAYER}, {PLAYER}!\n"
+	.string "Quick! Come quickly!$"
+
+PlayersHouse_1F_Text_MaybeDadWillBeOn:
+	.string "MOM: Look! It's PETALBURG GYM!\n"
+	.string "Maybe DAD will be on!$"
+
+PlayersHouse_1F_Text_ItsOverWeMissedHim:
+	.string "MOM: Oh… It's over.\p"
+	.string "I think DAD was on, but we missed him.\n"
+	.string "Too bad.$"
+
+PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor:
+	.string "Oh, yes.\n"
+	.string "One of DAD's friends lives in town.\p"
+	.string "PROF. BIRCH is his name.\p"
+	.string "He lives right next door, so you should\n"
+	.string "go over and introduce yourself.$"
+
+PlayersHouse_1F_Text_SeeYouHoney:
+	.string "MOM: See you, honey!$"
+
+PlayersHouse_1F_Text_DidYouMeetProfBirch:
+	.string "MOM: Did you introduce yourself to\n"
+	.string "PROF. BIRCH?$"
+
+PlayersHouse_1F_Text_YouShouldRestABit:
+	.string "MOM: How are you doing, {PLAYER}?\n"
+	.string "You look a little tired.\p"
+	.string "I think you should rest a bit.$"
+
+PlayersHouse_1F_Text_TakeCareHoney:
+	.string "MOM: Take care, honey!$"
+
+PlayersHouse_1F_Text_GotDadsBadgeHeresSomethingFromMom:
+	.string "MOM: Oh? Did DAD give you that BADGE?\p"
+	.string "Then here's something from your MOM!$"
+
+PlayersHouse_1F_Text_DontPushYourselfTooHard:
+	.string "Don't push yourself too hard, dear.\n"
+	.string "You can always come home.\p"
+	.string "Go for it, honey!$"
+
+PlayersHouse_1F_Text_IsThatAPokenav:
+	.string "MOM: What is that, honey? A POKéNAV?\n"
+	.string "Someone from DEVON gave it to you?\p"
+	.string "Well, honey, how about registering\n"
+	.string "your mom?\p"
+	.string "… … …$"
+
+PlayersHouse_1F_Text_RegisteredMom:
+	.string "Registered MOM\n"
+	.string "in the POKéNAV.$"
+
+PlayersHouse_1F_Text_Vigoroth1:
+	.string "Fugiiiiih!$"
+
+PlayersHouse_1F_Text_Vigoroth2:
+	.string "Huggoh, uggo uggo…$"
+
+PlayersHouse_1F_Text_ReportFromPetalburgGym:
+	.string "INTERVIEWER: …We brought you this\n"
+	.string "report from in front of PETALBURG GYM.$"
+
+PlayersHouse_1F_Text_TheresAMovieOnTV:
+	.string "There is a movie on TV.\p"
+	.string "Two men are dancing on a big piano\n"
+	.string "keyboard.\p"
+	.string "Better get going!$"
+
+PlayersHouse_1F_Text_RunningShoesManual:
+	.string "It's the instruction booklet for the\n"
+	.string "RUNNING SHOES.\p"
+	.string "“Press the B Button to run while\n"
+	.string "wearing your RUNNING SHOES.\p"
+	.string "“Lace up your RUNNING SHOES and hit\n"
+	.string "the road running!”$"
+
+PlayersHouse_1F_Text_TicketFromBrineyCameForYou:
+	.string "DAD: Hm?\p"
+	.string "Hey, it's {PLAYER}!\p"
+	.string "It's been a while since I saw you,\n"
+	.string "but you look…stronger, somehow.\p"
+	.string "That's the impression I get.\n"
+	.string "But your old man hasn't given up yet!\p"
+	.string "Oh, yes, I have something for you.\n"
+	.string "This came to you from someone named\l"
+	.string "MR. BRINEY.$"
+
+PlayersHouse_1F_Text_PortsInSlateportLilycove:
+	.string "DAD: Hm, a TICKET for a ferry?\p"
+	.string "If I recall, there are ferry ports in\n"
+	.string "SLATEPORT and LILYCOVE.$"
+
+PlayersHouse_1F_Text_BetterGetBackToGym:
+	.string "I'd better get back to PETALBURG GYM.\p"
+	.string "MOM, thanks for looking after the house\n"
+	.string "while I'm away.$"
+
+PlayersHouse_1F_Text_DadShouldStayLonger:
+	.string "MOM: That DAD of yours…\p"
+	.string "He comes home for the first time in a\n"
+	.string "while, but all he talks about is POKéMON.\p"
+	.string "He should relax and stay a little longer.$"
+
+PlayersHouse_1F_Text_IsThatABreakingStory:
+	.string "MOM: Is that a breaking news story?$"
+
+PlayersHouse_1F_Text_LatiEmergencyNewsFlash:
+	.string "We bring you this emergency\n"
+	.string "news flash!\p"
+	.string "In various HOENN locales, there have\n"
+	.string "been reports of a BZZT…colored\l"
+	.string "POKéMON in flight.\p"
+	.string "The identity of this POKéMON is\n"
+	.string "currently unknown.\p"
+	.string "We now return you to the regular\n"
+	.string "movie program.$"
+
+PlayersHouse_1F_Text_WhatColorDidTheySay:
+	.string "MOM: {PLAYER}, did you catch that?\p"
+	.string "What color did the announcer say\n"
+	.string "that POKéMON was?$"
+
+PlayersHouse_1F_Text_StillUnknownPokemon:
+	.string "MOM: Well, isn't that something!\n"
+	.string "There are still unknown POKéMON.$"

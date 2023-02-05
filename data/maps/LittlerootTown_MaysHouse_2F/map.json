@@ -2,7 +2,7 @@
   "id": "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F",
   "name": "LittlerootTown_MaysHouse_2F",
   "layout": "LAYOUT_LITTLEROOT_TOWN_MAYS_HOUSE_2F",
-  "music": "MUS_SPRINGWOOD_LAKE",
+  "music": "MUS_SPRINGWOOD_POND",
   "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -31,21 +31,43 @@
       "x": 7,
       "y": 2,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_LITTLEROOT_INTRO_STATE",
       "var_value": "0",
-      "script": "NULL"
-    },
-    {
-      "type": "trigger",
-      "x": 7,
-      "y": 3,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "NULL"
+      "script": "SpringwoodPond_EventScript_PlayersHouse_Clock1"
     }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 0,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SpringwoodPond_EventScript_PlayersHouse_Laptop"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "EventScript_RegionMap"
+    },
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SpringwoodPond_EventScript_PlayersHouse_Clock2"
+    },
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "PlayersHouse_2F_EventScript_GameCube"
+    }
   ]
 }

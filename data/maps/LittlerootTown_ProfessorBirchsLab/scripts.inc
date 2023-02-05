@@ -56,7 +56,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_SetAfterJohtoStarterLayout::
 	end
 
 LittlerootTown_ProfessorBirchsLab_OnWarp:
-	map_script_2 VAR_BIRCH_LAB_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_SetPlayerPosForReceiveStarter
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, SpringwoodPond_SakurasLab_EventScript_SetObjectPosForDex
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForDexUpgrade
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForDexUpgrade
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 3, LittlerootTown_ProfessorBirchsLab_EventScript_AddRivalObject
@@ -64,6 +64,14 @@ LittlerootTown_ProfessorBirchsLab_OnWarp:
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForJohtoStarters
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 5, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForJohtoStarters
 	.2byte 0
+
+SpringwoodPond_SakurasLab_EventScript_SetObjectPosForDex::
+	clearflag FLAG_HIDE_SAKURAS_LAB_RIVAL
+	addobject 1
+	addobject 9
+	turnobject 9, DIR_SOUTH
+	setobjectxy 9, 3, 4
+	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_SetPlayerPosForReceiveStarter::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
@@ -103,7 +111,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForJohtoStarters::
 	end
 
 LittlerootTown_ProfessorBirchsLab_OnFrame:
-	map_script_2 VAR_BIRCH_LAB_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_GiveStarterEvent
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, SpringwoodPond_SakurasLab_EventScript_Dex
 	map_script_2 VAR_BIRCH_LAB_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedexEvent
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 4, LittlerootTown_ProfessorBirchsLab_EventScript_ChooseJohtoStarter
@@ -747,7 +755,7 @@ LittlerootTown_ProfessorBirchsLab_Text_HeardYouBeatRivalTakePokedex:
 	.string "this POKéDEX.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex:
-	.string "{PLAYER} received the POKéDEX!$"
+	.string "{PLAYER} received the Pokédex!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
 	.string "PROF. BIRCH: The POKéDEX is a high-tech\n"
@@ -999,3 +1007,592 @@ LittlerootTown_ProfessorBirchsLab_Text_ScottAboardSSTidalCall:
 	.string "we meet. I'll be waiting!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
+
+SpringwoodPond_SakurasLab_EventScript_Dex::
+	lockall
+	applymovement OBJ_EVENT_ID_PLAYER, SpringwoodPond_SakurasLab_Movement_Dex
+	waitmovement 0
+	msgbox SpringwoodPond_SakurasLab_EventScript_Dex_Text_0
+	closemessage
+	applymovement 9, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	msgbox SpringwoodPond_SakurasLab_EventScript_Dex_Text_1
+	closemessage
+	applymovement 1, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	msgbox SpringwoodPond_SakurasLab_EventScript_Dex_Text_2
+	completequest QUEST_HELPING_THE_PROFESSOR
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex
+	waitfanfare
+	setflag FLAG_SYS_POKEDEX_GET
+	special SetUnlockedPokedexFlags
+	special EnableNationalPokedex
+	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
+	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
+	msgbox SpringwoodPond_SakurasLab_EventScript_Dex_Text_3
+	giveitem ITEM_EXP_SHARE
+	msgbox SpringwoodPond_SakurasLab_EventScript_Dex_Text_4
+	closemessage
+	applymovement 9, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	msgbox SpringwoodPond_SakurasLab_EventScript_Dex_Text_5
+	closemessage
+	startquest QUEST_A_SPOOKY_START
+	completesubquest QUEST_A_SPOOKY_START, SUB_QUEST_TUNNEL_TO_TAPROOT
+	setvar VAR_LITTLEROOT_INTRO_STATE, 6
+	setflag FLAG_HIDE_SPRINGWOOD_POND_SKITTY
+	releaseall
+	return
+
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball1::
+	lockall
+	goto_if_unset FLAG_SYS_POKEMON_GET, SpringwoodPond_SakurasLab_EventScript_Pokeball1_2
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_3
+SpringwoodPond_SakurasLab_EventScript_Pokeball1_1:
+	waitmessage
+	releaseall
+	return
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball1_2:
+	playmoncry SPECIES_BULBASAUR, CRY_MODE_NORMAL
+	showmonpic SPECIES_BULBASAUR, 10, 3
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq SpringwoodPond_SakurasLab_EventScript_Pokeball1_5
+	hidemonpic
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_2
+	goto SpringwoodPond_SakurasLab_EventScript_Pokeball1_1
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball1_5:
+	givemon SPECIES_BULBASAUR, 5, ITEM_ORAN_BERRY
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_1
+	removeobject 2
+	setflag FLAG_SYS_POKEMON_GET
+	clearflag FLAG_HIDE_SAKURAS_LAB_RIVAL
+	addobject 9
+	bufferspeciesname 0, SPECIES_BULBASAUR
+	call NicknamePartyMon
+	call SpringwoodPond_SakurasLab_EventScript_BulbasaurChosen
+	goto SpringwoodPond_SakurasLab_EventScript_Pokeball1_1
+
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball2::
+	lockall
+	playmoncry SPECIES_FENNEKIN, CRY_MODE_NORMAL
+	showmonpic SPECIES_FENNEKIN, 10, 3
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball2_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq SpringwoodPond_SakurasLab_EventScript_Pokeball2_2
+	hidemonpic
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_2
+SpringwoodPond_SakurasLab_EventScript_Pokeball2_1:
+	waitmessage
+	releaseall
+	return
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball2_2:
+	givemon SPECIES_FENNEKIN, 5, ITEM_ORAN_BERRY
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball2_Text_1
+	removeobject 3
+	setflag FLAG_SYS_POKEMON_GET
+	clearflag FLAG_HIDE_SAKURAS_LAB_RIVAL
+	addobject 9
+	bufferspeciesname 0, SPECIES_FENNEKIN
+	call NicknamePartyMon
+	call SpringwoodPond_SakurasLab_EventScript_FennekinChosen
+	goto SpringwoodPond_SakurasLab_EventScript_Pokeball2_1
+
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball3::
+	lockall
+	playmoncry SPECIES_OSHAWOTT, CRY_MODE_NORMAL
+	showmonpic SPECIES_OSHAWOTT, 10, 3
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball3_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq SpringwoodPond_SakurasLab_EventScript_Pokeball3_2
+	hidemonpic
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_2
+SpringwoodPond_SakurasLab_EventScript_Pokeball3_1:
+	waitmessage
+	releaseall
+	return
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball3_2:
+	givemon SPECIES_OSHAWOTT, 5, ITEM_ORAN_BERRY
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball3_Text_1
+	removeobject 5
+	setflag FLAG_SYS_POKEMON_GET
+	clearflag FLAG_HIDE_SAKURAS_LAB_RIVAL
+	addobject 9
+	bufferspeciesname 0, SPECIES_OSHAWOTT
+	call NicknamePartyMon
+	call SpringwoodPond_SakurasLab_EventScript_OshawottChosen
+	goto SpringwoodPond_SakurasLab_EventScript_Pokeball3_1
+
+
+SpringwoodPond_SakurasLab_EventScript_BulbasaurChosen::
+	playse SE_EXIT
+	waitse
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
+	waitmovement 0
+	call SpringwoodPond_SakurasLab_EventScript_RivalSawPeon
+	return
+
+
+SpringwoodPond_SakurasLab_EventScript_FennekinChosen::
+	playse SE_EXIT
+	waitse
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	call SpringwoodPond_SakurasLab_EventScript_RivalSawPeon
+	return
+
+
+SpringwoodPond_SakurasLab_EventScript_OshawottChosen::
+	playse SE_EXIT
+	waitse
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
+	waitmovement 0
+	call SpringwoodPond_SakurasLab_EventScript_RivalSawPeon
+	return
+
+
+SpringwoodPond_SakurasLab_EventScript_RivalSawPeon::
+	applymovement 9, SpringwoodPond_SakurasLab_Movement_RivalEnters
+	waitmovement 0
+	msgbox SpringwoodPond_SakurasLab_EventScript_RivalSawPeon_Text_0
+	closemessage
+	applymovement 1, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	msgbox SpringwoodPond_SakurasLab_EventScript_RivalSawPeon_Text_1
+	closemessage
+	applymovement 9, Common_Movement_WalkInPlaceUp
+	msgbox SpringwoodPond_SakurasLab_EventScript_RivalSawPeon_Text_2
+	closemessage
+	applymovement 9, SpringwoodPond_SakurasLab_Movement_RivalLeaves
+	waitmovement 0
+	playse SE_EXIT
+	setflag FLAG_HIDE_SAKURAS_LAB_RIVAL
+	removeobject 9
+	setvar VAR_LITTLEROOT_INTRO_STATE, 4
+	completesubquest QUEST_HELPING_THE_PROFESSOR, SUB_QUEST_IN_PURSUIT
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME, QUEST_HELPING_THE_PROFESSOR
+	call QuestUpdated
+	return
+
+
+SpringwoodPond_SakurasLab_EventScript_Scientist1::
+	lockall
+	faceplayer
+	goto_if_set FLAG_SAKURAS_LAB_CHAOS, SpringwoodPond_SakurasLab_EventScript_Scientist1_2
+	msgbox SpringwoodPond_SakurasLab_EventScript_Scientist1_Text_1
+SpringwoodPond_SakurasLab_EventScript_Scientist1_1:
+	releaseall
+	return
+
+SpringwoodPond_SakurasLab_EventScript_Scientist1_2:
+	msgbox SpringwoodPond_SakurasLab_EventScript_Scientist1_Text_0
+	goto SpringwoodPond_SakurasLab_EventScript_Scientist1_1
+
+
+SpringwoodPond_SakurasLab_EventScript_Scientist2::
+	lockall
+	faceplayer
+	goto_if_set FLAG_SAKURAS_LAB_CHAOS, SpringwoodPond_SakurasLab_EventScript_Scientist2_2
+	msgbox SpringwoodPond_SakurasLab_EventScript_Scientist2_Text_1
+SpringwoodPond_SakurasLab_EventScript_Scientist2_1:
+	releaseall
+	return
+
+SpringwoodPond_SakurasLab_EventScript_Scientist2_2:
+	msgbox SpringwoodPond_SakurasLab_EventScript_Scientist2_Text_0
+	goto SpringwoodPond_SakurasLab_EventScript_Scientist2_1
+
+
+SpringwoodPond_SakurasLab_EventScript_Scientist3::
+	lockall
+	faceplayer
+	goto_if_set FLAG_SAKURAS_LAB_CHAOS, SpringwoodPond_SakurasLab_EventScript_Scientist3_2
+	msgbox SpringwoodPond_SakurasLab_EventScript_Scientist3_Text_1
+SpringwoodPond_SakurasLab_EventScript_Scientist3_1:
+	releaseall
+	return
+
+SpringwoodPond_SakurasLab_EventScript_Scientist3_2:
+	msgbox SpringwoodPond_SakurasLab_EventScript_Scientist3_Text_0
+	goto SpringwoodPond_SakurasLab_EventScript_Scientist3_1
+
+
+SpringwoodPond_SakurasLab_EventScript_Sakura::
+	lockall
+	faceplayer
+	goto_if_set FLAG_SYS_POKEMON_GET, SpringwoodPond_SakurasLab_EventScript_Sakura_2
+	goto_if_set FLAG_SAKURAS_LAB_CHAOS, SpringwoodPond_SakurasLab_EventScript_Sakura_3
+	msgbox SpringwoodPond_SakurasLab_EventScript_Sakura_Text_3
+SpringwoodPond_SakurasLab_EventScript_Sakura_1:
+	releaseall
+	return
+
+SpringwoodPond_SakurasLab_EventScript_Sakura_2:
+	goto_if_set FLAG_SAKURAS_LAB_CHAOS, SpringwoodPond_SakurasLab_EventScript_Sakura_7
+	msgbox SpringwoodPond_SakurasLab_EventScript_Sakura_Text_1
+	goto SpringwoodPond_SakurasLab_EventScript_Sakura_1
+
+SpringwoodPond_SakurasLab_EventScript_Sakura_3:
+	msgbox SpringwoodPond_SakurasLab_EventScript_Sakura_Text_2
+	goto SpringwoodPond_SakurasLab_EventScript_Sakura_1
+
+SpringwoodPond_SakurasLab_EventScript_Sakura_7:
+	msgbox SpringwoodPond_SakurasLab_EventScript_Sakura_Text_0
+	goto SpringwoodPond_SakurasLab_EventScript_Sakura_1
+
+
+SpringwoodPond_SakurasLab_EventScript_LeavingEarly::
+	lockall
+	applymovement 1, Common_Movement_JumpInPlaceDown
+	waitmovement 0
+	applymovement 1, Common_Movement_JumpInPlaceDown
+	waitmovement 0
+	msgbox SpringwoodPond_SakurasLab_EventScript_LeavingEarly_Text_0
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	waitmovement 0
+	releaseall
+	return
+
+
+SpringwoodPond_SakurasLab_EventScript_MeetSakura1::
+	lockall
+	call MeetSakuraPart1
+	applymovement OBJ_EVENT_ID_PLAYER, SpringwoodPond_SakurasLab_Movement_MeetSakura1
+	waitmovement 0
+	call MeetSakuraPart2
+	releaseall
+	return
+
+
+SpringwoodPond_SakurasLab_EventScript_MeetSakura2::
+	lockall
+	call MeetSakuraPart1
+	applymovement OBJ_EVENT_ID_PLAYER, SpringwoodPond_SakurasLab_Movement_MeetSakura2
+	waitmovement 0
+	call MeetSakuraPart2
+	releaseall
+	return
+
+
+MeetSakuraPart1::
+	applymovement 1, Common_Movement_JumpInPlaceDown
+	waitmovement 0
+	applymovement 1, Common_Movement_JumpInPlaceDown
+	waitmovement 0
+	msgbox MeetSakuraPart1_Text_0
+	closemessage
+	return
+
+
+MeetSakuraPart2::
+	msgbox MeetSakuraPart2_Text_0
+	closemessage
+	playbgm MUS_ENCOUNTER_MAGMA, 0
+	clearflag FLAG_HIDE_SPRINGWOOD_POND_CIPHER_PEON_LAB
+	addobject 8
+	applymovement 8, SpringwoodPond_SakurasLab_Movement_PeonApproaches
+	waitmovement 0
+	msgbox MeetSakuraPart2_Text_1
+	closemessage
+	applymovement 8, SpringwoodPond_SakurasLab_Movement_PeonLeaves
+	waitmovement 0
+	playse SE_EXIT
+	setflag FLAG_HIDE_SPRINGWOOD_POND_CIPHER_PEON_LAB
+	removeobject 8
+	fadedefaultbgm
+	waitse
+	applymovement 1, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	msgbox MeetSakuraPart2_Text_2
+	closemessage
+	setvar VAR_LITTLEROOT_INTRO_STATE, 3
+	setflag FLAG_SAKURAS_LAB_CHAOS
+	return
+
+
+NicknamePartyMon::
+	msgbox NicknamePartyMon_Text_0, MSGBOX_YESNO
+	hidemonpic
+	compare VAR_RESULT, YES
+	goto_if_eq NicknamePartyMon_1
+	return
+
+NicknamePartyMon_1:
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	return
+
+
+SpringwoodPond_SakurasLab_Movement_MeetSakura1:
+	walk_up
+	walk_up
+	walk_right
+	walk_in_place_fast_up
+	step_end
+
+SpringwoodPond_SakurasLab_Movement_MeetSakura2:
+	walk_up
+	walk_up
+	walk_in_place_fast_up
+	step_end
+
+SpringwoodPond_SakurasLab_Movement_PeonApproaches:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_in_place_fast_right
+	step_end
+
+SpringwoodPond_SakurasLab_Movement_PeonLeaves:
+	walk_in_place_fast_right
+	delay_16
+	delay_16
+	delay_16
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	step_end
+
+SpringwoodPond_SakurasLab_Movement_RivalEnters:
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	jump_in_place_right
+	jump_in_place_right
+	step_end
+
+SpringwoodPond_SakurasLab_Movement_RivalLeaves:
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	step_end
+
+SpringwoodPond_SakurasLab_Movement_Dex:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_in_place_up
+	step_end
+
+SpringwoodPond_SakurasLab_EventScript_Dex_Text_0:
+	.string "Sakura: So, Bella told me everything.\n"
+	.string "It's too bad, really.\p"
+	.string "I'm concerned about what these Cipher\n"
+	.string "people might want with it, but I\l"
+	.string "suppose it's out of our hands now.\p"
+	.string "I also heard you battle really well,\n"
+	.string "{PLAYER}. I think you're ready to be a\l"
+	.string "real Pokémon Trainer. How about we\l"
+	.string "make a deal?$"
+
+SpringwoodPond_SakurasLab_EventScript_Dex_Text_1:
+	.string "Bella: My family has been helping Prof.\n"
+	.string "Sakura create a complete database of\l"
+	.string "the Pokémon here in Rika. They call it\l"
+	.string "the Pokédex.$"
+
+SpringwoodPond_SakurasLab_EventScript_Dex_Text_2:
+	.string "Sakura: You'll have to travel all over\n"
+	.string "Rika and capture every species of\l"
+	.string "Pokémon for me. If you promise to help\l"
+	.string "me, I won't tell your mother.\p"
+	.string "Without further ado, here it is! The\n"
+	.string "Pokédex!$"
+
+SpringwoodPond_SakurasLab_EventScript_Dex_Text_3:
+	.string "Oh, and, here! As an added bonus for\n"
+	.string "helping out today, you can have this.$"
+
+SpringwoodPond_SakurasLab_EventScript_Dex_Text_4:
+	.string "Sakura: The Exp. Share is a device that\n"
+	.string "I'm certain will help you along the way.\l"
+	.string "You'll need to get stronger if you want\l"
+	.string "to travel far from here.\p"
+	.string "Anyway, are you ready, {PLAYER}? Go\n"
+	.string "on out there and fill that Pokédex!$"
+
+SpringwoodPond_SakurasLab_EventScript_Dex_Text_5:
+	.string "Bella: Isn't this cool, {PLAYER}?\p"
+	.string "Of course, I'll finish the Pokedex way\n"
+	.string "before you, but it's nice that you get\l"
+	.string "to try!\p"
+	.string "I'll probably start by heading to\n"
+	.string "Taproot Town through Springrock Path.\l"
+	.string "I'll let you get a head start. You'll\l"
+	.string "need it!$"
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_0:
+	.string "Do you want Bulbasaur, the Grass Type\n"
+	.string "Pokémon?$"
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_1:
+	.string "{PLAYER} received the Bulbasaur!$"
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_2:
+	.string "Sakura: This is a very important\n"
+	.string "decision, but please hurry!$"
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_3:
+	.string "Sakura: You already picked one! This is\n"
+	.string "no time to be greedy!$"
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball2_Text_0:
+	.string "Do you want Fennekin, the Fire Type\n"
+	.string "Pokémon?$"
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball2_Text_1:
+	.string "{PLAYER} received the Fennekin!$"
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball3_Text_0:
+	.string "Do you want Oshawott, the Water Type\n"
+	.string "Pokémon?$"
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball3_Text_1:
+	.string "{PLAYER} received the Oshawott!$"
+
+SpringwoodPond_SakurasLab_EventScript_RivalSawPeon_Text_0:
+	.string "Bella: Prof. Sakura! Some guy ran off\n"
+	.string "with that device you were making!\p"
+	.string "I think they went down towards that\n"
+	.string "cave on Route 1!$"
+
+SpringwoodPond_SakurasLab_EventScript_RivalSawPeon_Text_1:
+	.string "Sakura: You saw them? Oh, thank\n"
+	.string "goodness!\p"
+	.string "{PLAYER}, Bella! Please, go find them\n"
+	.string "and get back that precious\l"
+	.string "technology!$"
+
+SpringwoodPond_SakurasLab_EventScript_RivalSawPeon_Text_2:
+	.string "Bella: You can count on me!$"
+
+SpringwoodPond_SakurasLab_EventScript_Scientist1_Text_0:
+	.string "What just happened? Who was that? Is\n"
+	.string "Prof. Sakura okay?$"
+
+SpringwoodPond_SakurasLab_EventScript_Scientist1_Text_1:
+	.string "Working at the Research Institute is\n"
+	.string "hard work, but it's very rewarding.\p"
+	.string "Prof. Sakura gives us the best\n"
+	.string "equipment out there to carry out\l"
+	.string "ground-breaking research.$"
+
+SpringwoodPond_SakurasLab_EventScript_Scientist2_Text_0:
+	.string "Why would they be after the Pokéball\n"
+	.string "changing device?$"
+
+SpringwoodPond_SakurasLab_EventScript_Scientist2_Text_1:
+	.string "Prof. Sakura is extremely brilliant.\n"
+	.string "She's an inspiration to Pokémon\l"
+	.string "Researchers everywhere.$"
+
+SpringwoodPond_SakurasLab_EventScript_Scientist3_Text_0:
+	.string "I can't believe it! Someone had the\n"
+	.string "nerve to steal from the Research\l"
+	.string "Institute?$"
+
+SpringwoodPond_SakurasLab_EventScript_Scientist3_Text_1:
+	.string "I work on organizing the Research\n"
+	.string "Institute's data for Prof. Sakura.\p"
+	.string "Things would very quickly get out of\n"
+	.string "hand if she didn't have someone like me\l"
+	.string "around!$"
+
+SpringwoodPond_SakurasLab_EventScript_Sakura_Text_0:
+	.string "Sakura: Go, give chase! They probably\n"
+	.string "made a break for it towards the cave on\l"
+	.string "Route 1!$"
+
+SpringwoodPond_SakurasLab_EventScript_Sakura_Text_1:
+	.string "Sakura: This is a placeholder.$"
+
+SpringwoodPond_SakurasLab_EventScript_Sakura_Text_2:
+	.string "Sakura: What are you waiting for? Grab\n"
+	.string "a Pokéball and give chase, {PLAYER}!$"
+
+SpringwoodPond_SakurasLab_EventScript_Sakura_Text_3:
+	.string "This should be impossible to see, but\n"
+	.string "you did it. I hope you're happy.$"
+
+SpringwoodPond_SakurasLab_EventScript_LeavingEarly_Text_0:
+	.string "Sakura: Wh-where are you going? You\n"
+	.string "need a Pokémon before you can go after\l"
+	.string "that thief!$"
+
+MeetSakuraPart1_Text_0:
+	.string "Sakura: {PLAYER}! Come, come!\n"
+	.string "Quickly!$"
+
+MeetSakuraPart2_Text_0:
+	.string "Sakura: Good to see you, {PLAYER}!\n"
+	.string "You have impeccable timing!\p"
+	.string "As you may know, a Pokéball binds itself\n"
+	.string "to the Pokémon you capture with it.\l"
+	.string "This means it is very important to\l"
+	.string "capture a Pokémon using a ball you like,\l"
+	.string "because it can never be changed.\p"
+	.string "Well, we seek to change it anyway!\p"
+	.string "With my latest invention, a Trainer will\n"
+	.string "be able to change their Pokéball at any\l"
+	.string "time, for any Pokémon! Isn't that\l"
+	.string "exciting? I know your mother won't let\l"
+	.string "you get a Pokémon yet, but I thought it\l"
+	.string "might cheer you up if you could be a\l"
+	.string "part of Pokémon history. Will you do\l"
+	.string "the honors of putting this last piece-$"
+
+MeetSakuraPart2_Text_1:
+	.string "???: I'll be taking that machine. We\n"
+	.string "need this technology far more than you\l"
+	.string "do, Professor!$"
+
+MeetSakuraPart2_Text_2:
+	.string "Sakura: Oh, goodness! This isn't good!\p"
+	.string "I don't know who that was, but we need\n"
+	.string "to get that device back!\p"
+	.string "{PLAYER}, do you see those Pokéballs\n"
+	.string "scattered around?\p"
+	.string "Please, grab one and chase after them!$"
+
+NicknamePartyMon_Text_0:
+	.string "Give your new {STR_VAR_1} a nickname?$"

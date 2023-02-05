@@ -15,8 +15,8 @@
 #define QUEST_MENU_BUFFER_QUEST_NAME    10   //buffers a quest name to gStringVar1
 
 // quest number defines
-#define QUEST_1          0
-#define QUEST_2          1
+#define QUEST_HELPING_THE_PROFESSOR          0
+#define QUEST_A_SPOOKY_START          1
 #define QUEST_3          2
 #define QUEST_4          3
 #define QUEST_5          4
@@ -47,14 +47,14 @@
 #define QUEST_30        29
 #define QUEST_COUNT     (QUEST_30 + 1)
 
-#define SUB_QUEST_1          0
-#define SUB_QUEST_2          1
-#define SUB_QUEST_3          2
-#define SUB_QUEST_4          3
-#define SUB_QUEST_5          4
-#define SUB_QUEST_6          5
-#define SUB_QUEST_7          6
-#define SUB_QUEST_8          7
+#define SUB_QUEST_MEETING_SAKURA          0
+#define SUB_QUEST_IN_PURSUIT          1
+#define SUB_QUEST_EMPTY_HANDED          2
+#define SUB_QUEST_TUNNEL_TO_TAPROOT          3
+#define SUB_QUEST_SHADOWY_FIGURE          4
+#define SUB_QUEST_QUANTUM_CRISIS          5
+#define SUB_QUEST_RIVAL_REMATCH         6
+#define SUB_QUEST_FIRST_GYM          7
 #define SUB_QUEST_9          8
 #define SUB_QUEST_10         9
 #define SUB_QUEST_11        10
@@ -76,11 +76,11 @@
 #define SUB_QUEST_27        26
 #define SUB_QUEST_28        27
 #define SUB_QUEST_29        28
-#define SUB_QUEST_30        29
+#define SUB_QUEST_EMPTY_HANDED0        29
 
-#define QUEST_1_SUB_COUNT 10
-#define QUEST_2_SUB_COUNT 20
-#define SUB_QUEST_COUNT (QUEST_1_SUB_COUNT + QUEST_2_SUB_COUNT)
+#define QUEST_HELPING_THE_PROFESSOR_SUB_COUNT 3
+#define QUEST_A_SPOOKY_START_SUB_COUNT 5
+#define SUB_QUEST_COUNT (QUEST_HELPING_THE_PROFESSOR_SUB_COUNT + QUEST_A_SPOOKY_START_SUB_COUNT)
 
 #define QUEST_ARRAY_COUNT (SUB_QUEST_COUNT > QUEST_COUNT ? SUB_QUEST_COUNT : QUEST_COUNT)
 #endif // GUARD_CONSTANTS_QUESTS_H

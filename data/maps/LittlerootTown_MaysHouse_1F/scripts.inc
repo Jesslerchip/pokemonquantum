@@ -47,7 +47,7 @@ LittlerootTown_MaysHouse_1F_EventScript_MoveMomToDoor::
 
 @ Many of the below scripts have no gender check because they assume youre in the correct house
 LittlerootTown_MaysHouse_1F_OnFrame:
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_MaysHouse_1F_EventScript_EnterHouseMovingIn
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, SpringwoodPond_PlayersHouse_1F_EventScript_MomLeavingForTrip
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_MaysHouse_1F_EventScript_GoUpstairsToSetClock
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_MaysHouse_1F_EventScript_PetalburgGymReport
 	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 1, LittlerootTown_MaysHouse_1F_EventScript_YoureNewNeighbor
@@ -404,3 +404,83 @@ RivalsHouse_1F_Text_DoYouHavePokemon:
 	.string "Hi, neighbor!\p"
 	.string "Do you already have your\n"
 	.string "own POKéMON?$"
+
+SpringwoodPond_PlayersHouse_1F_EventScript_MomLeavingForTrip::
+	lockall
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
+	waitmovement 0
+	playse SE_PIN
+	applymovement 1, Common_Movement_ExclamationMark
+	waitmovement 0
+	delay 48
+	applymovement 1, SpringwoodPond_PlayersHouse_1F_Movement_MomApproachesPlayer
+	waitmovement 0
+	msgbox SpringwoodPond_PlayersHouse_1F_Text_MomLeavingForTrip1
+	setflag FLAG_SYS_QUEST_MENU_GET
+	startquest QUEST_HELPING_THE_PROFESSOR
+	completesubquest QUEST_HELPING_THE_PROFESSOR, SUB_QUEST_MEETING_SAKURA
+	msgbox SpringwoodPond_PlayersHouse_1F_Text_MomLeavingForTrip2
+	closemessage
+	applymovement 1, SpringwoodPond_PlayersHouse_1F_Movement_MomLeavesPlayer
+	waitmovement 0
+	removeobject 1
+	setflag FLAG_HIDE_SPRINGWOOD_POND_MOM
+	setvar VAR_LITTLEROOT_INTRO_STATE, 2
+	setflag FLAG_HIDE_SPRINGWOOD_POND_CIPHER_PEON_LAB
+	setflag FLAG_HIDE_SAKURAS_LAB_RIVAL
+	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE
+	playse SE_EXIT
+	waitse
+	releaseall
+	return
+
+
+SpringwoodPond_PlayersHouse_1F_Movement_MomApproachesPlayer:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_in_place_fast_up
+	step_end
+
+SpringwoodPond_PlayersHouse_1F_Movement_MomLeavesPlayer:
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_in_place_fast_down
+	step_end
+
+SpringwoodPond_PlayersHouse_1F_Text_MomLeavingForTrip1::
+	.string "Mom: Sorry {PLAYER}, it's time for me\n"
+	.string "to go. I've spent a lot of time\l"
+	.string "preparing this presentation for\l"
+	.string "Professor Rowan. I don't want it to\l"
+	.string "have all been for nothing!\p"
+	.string "…Oh! That's right!\p"
+	.string "{PLAYER}, I think Professor Sakura\n"
+	.string "was looking for you. She said she\l"
+	.string "wanted some help with something. You'd\l"
+	.string "better head over to the Research\l"
+	.string "Institute. I think you can figure that\l"
+	.string "out using your Quests menu.$"
+
+SpringwoodPond_PlayersHouse_1F_Text_MomLeavingForTrip2::
+	.string "Mom: You can do whatever she asks, but\n"
+	.string "don't leave Springwood Pond.\l"
+	.string "Understood?\p"
+	.string "It's too dangerous without a Pokémon\n"
+	.string "of your own. Someday, you'll be able to\l"
+	.string "choose your very own partner. But\l"
+	.string "today isn't that day, so please stay\l"
+	.string "safe!\p"
+	.string "All right, {PLAYER}! I'll be back\n"
+	.string "before you know it. Be good for\l"
+	.string "Professor Sakura!$"
