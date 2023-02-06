@@ -25,6 +25,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual::
 	return
 
 LittlerootTown_BrendansHouse_1F_OnTransition:
+	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, Common_EventScript_SetupRivalGfxId
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV
@@ -311,7 +312,7 @@ script SpringwoodPond_BellasHouse_EventScript_BellaMom {
     faceplayer
     if(var(VAR_LITTLEROOT_INTRO_STATE) == 2) {
         msgbox(format("Hi there! You must be {PLAYER}! Your mother has said many good things about you.\p"
-        "My husband and I work for Professor Sakura. We decided it was best to move closer to the Research "
+        "My husband and I work for Prof. Sakura. We decided it was best to move closer to the Research "
         "Institute so we didn't have to commute from Spectre City."))
 		closemessage
 		applymovement(BELLA_MOM, Common_Movement_WalkInPlaceFasterUp)
@@ -327,7 +328,7 @@ script SpringwoodPond_BellasHouse_EventScript_BellaDad {
     lockall 
     faceplayer
     if(var(VAR_LITTLEROOT_INTRO_STATE) == 2) {
-        msgbox(format("Well, hello there! I'm Bella's father. I'm also a researcher at Professor Sakura's Research "
+        msgbox(format("Well, hello there! I'm Bella's father. I'm also a researcher at Prof. Sakura's Research "
         "Institute.\pPlease try to be nice to our Bella. She has a hard time making friends."))
 		closemessage
 		applymovement(BELLA_DAD, Common_Movement_WalkInPlaceFasterLeft)

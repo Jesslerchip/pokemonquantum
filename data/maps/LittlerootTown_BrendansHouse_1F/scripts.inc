@@ -25,6 +25,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual::
 	return
 
 LittlerootTown_BrendansHouse_1F_OnTransition:
+	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, Common_EventScript_SetupRivalGfxId
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV
@@ -354,18 +355,17 @@ SpringwoodPond_BellasHouse_EventScript_BellaMom_Text_0:
 	.string "Hi there! You must be {PLAYER}! Your\n"
 	.string "mother has said many good things about\l"
 	.string "you.\p"
-	.string "My husband and I work for Professor\n"
-	.string "Sakura. We decided it was best to move\l"
-	.string "closer to the Research Institute so we\l"
-	.string "didn't have to commute from Spectre\l"
-	.string "City.$"
+	.string "My husband and I work for Prof. Sakura.\n"
+	.string "We decided it was best to move closer\l"
+	.string "to the Research Institute so we didn't\l"
+	.string "have to commute from Spectre City.$"
 
 SpringwoodPond_BellasHouse_EventScript_BellaMom_Text_1:
 	.string "This is a placeholder message.$"
 
 SpringwoodPond_BellasHouse_EventScript_BellaDad_Text_0:
 	.string "Well, hello there! I'm Bella's father. I'm\n"
-	.string "also a researcher at Professor\l"
-	.string "Sakura's Research Institute.\p"
+	.string "also a researcher at Prof. Sakura's\l"
+	.string "Research Institute.\p"
 	.string "Please try to be nice to our Bella. She\n"
 	.string "has a hard time making friends.$"

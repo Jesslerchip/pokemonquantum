@@ -57,6 +57,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_SetAfterJohtoStarterLayout::
 
 LittlerootTown_ProfessorBirchsLab_OnWarp:
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, SpringwoodPond_SakurasLab_EventScript_SetObjectPosForDex
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, SpringwoodPond_SakurasLab_EventScript_SetObjectPosForDex
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForDexUpgrade
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForDexUpgrade
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 3, LittlerootTown_ProfessorBirchsLab_EventScript_AddRivalObject
@@ -1039,7 +1040,7 @@ SpringwoodPond_SakurasLab_EventScript_Dex::
 	msgbox SpringwoodPond_SakurasLab_EventScript_Dex_Text_5
 	closemessage
 	startquest QUEST_A_SPOOKY_START
-	completesubquest QUEST_A_SPOOKY_START, SUB_QUEST_TUNNEL_TO_TAPROOT
+	completesubquest QUEST_A_SPOOKY_START, SUB_QUEST_1
 	setvar VAR_LITTLEROOT_INTRO_STATE, 6
 	setflag FLAG_HIDE_SPRINGWOOD_POND_SKITTY
 	releaseall
@@ -1081,19 +1082,24 @@ SpringwoodPond_SakurasLab_EventScript_Pokeball1_5:
 
 SpringwoodPond_SakurasLab_EventScript_Pokeball2::
 	lockall
-	playmoncry SPECIES_FENNEKIN, CRY_MODE_NORMAL
-	showmonpic SPECIES_FENNEKIN, 10, 3
-	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball2_Text_0, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq SpringwoodPond_SakurasLab_EventScript_Pokeball2_2
-	hidemonpic
-	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_2
+	goto_if_unset FLAG_SYS_POKEMON_GET, SpringwoodPond_SakurasLab_EventScript_Pokeball2_2
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_3
 SpringwoodPond_SakurasLab_EventScript_Pokeball2_1:
 	waitmessage
 	releaseall
 	return
 
 SpringwoodPond_SakurasLab_EventScript_Pokeball2_2:
+	playmoncry SPECIES_FENNEKIN, CRY_MODE_NORMAL
+	showmonpic SPECIES_FENNEKIN, 10, 3
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball2_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq SpringwoodPond_SakurasLab_EventScript_Pokeball2_5
+	hidemonpic
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_2
+	goto SpringwoodPond_SakurasLab_EventScript_Pokeball2_1
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball2_5:
 	givemon SPECIES_FENNEKIN, 5, ITEM_ORAN_BERRY
 	playfanfare MUS_OBTAIN_ITEM
 	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball2_Text_1
@@ -1109,19 +1115,24 @@ SpringwoodPond_SakurasLab_EventScript_Pokeball2_2:
 
 SpringwoodPond_SakurasLab_EventScript_Pokeball3::
 	lockall
-	playmoncry SPECIES_OSHAWOTT, CRY_MODE_NORMAL
-	showmonpic SPECIES_OSHAWOTT, 10, 3
-	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball3_Text_0, MSGBOX_YESNO
-	compare VAR_RESULT, YES
-	goto_if_eq SpringwoodPond_SakurasLab_EventScript_Pokeball3_2
-	hidemonpic
-	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_2
+	goto_if_unset FLAG_SYS_POKEMON_GET, SpringwoodPond_SakurasLab_EventScript_Pokeball3_2
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_3
 SpringwoodPond_SakurasLab_EventScript_Pokeball3_1:
 	waitmessage
 	releaseall
 	return
 
 SpringwoodPond_SakurasLab_EventScript_Pokeball3_2:
+	playmoncry SPECIES_OSHAWOTT, CRY_MODE_NORMAL
+	showmonpic SPECIES_OSHAWOTT, 10, 3
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball3_Text_0, MSGBOX_YESNO
+	compare VAR_RESULT, YES
+	goto_if_eq SpringwoodPond_SakurasLab_EventScript_Pokeball3_5
+	hidemonpic
+	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball1_Text_2
+	goto SpringwoodPond_SakurasLab_EventScript_Pokeball3_1
+
+SpringwoodPond_SakurasLab_EventScript_Pokeball3_5:
 	givemon SPECIES_OSHAWOTT, 5, ITEM_ORAN_BERRY
 	playfanfare MUS_OBTAIN_ITEM
 	msgbox SpringwoodPond_SakurasLab_EventScript_Pokeball3_Text_1
@@ -1165,13 +1176,15 @@ SpringwoodPond_SakurasLab_EventScript_OshawottChosen::
 SpringwoodPond_SakurasLab_EventScript_RivalSawPeon::
 	applymovement 9, SpringwoodPond_SakurasLab_Movement_RivalEnters
 	waitmovement 0
+	applymovement 1, Common_Movement_WalkInPlaceLeft
+	waitmovement 0
 	msgbox SpringwoodPond_SakurasLab_EventScript_RivalSawPeon_Text_0
 	closemessage
-	applymovement 1, Common_Movement_WalkInPlaceDown
+	applymovement 1, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	msgbox SpringwoodPond_SakurasLab_EventScript_RivalSawPeon_Text_1
 	closemessage
-	applymovement 9, Common_Movement_WalkInPlaceUp
+	applymovement 9, Common_Movement_WalkInPlaceRight
 	msgbox SpringwoodPond_SakurasLab_EventScript_RivalSawPeon_Text_2
 	closemessage
 	applymovement 9, SpringwoodPond_SakurasLab_Movement_RivalLeaves
@@ -1180,7 +1193,7 @@ SpringwoodPond_SakurasLab_EventScript_RivalSawPeon::
 	setflag FLAG_HIDE_SAKURAS_LAB_RIVAL
 	removeobject 9
 	setvar VAR_LITTLEROOT_INTRO_STATE, 4
-	completesubquest QUEST_HELPING_THE_PROFESSOR, SUB_QUEST_IN_PURSUIT
+	completesubquest QUEST_HELPING_THE_PROFESSOR, SUB_QUEST_2
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME, QUEST_HELPING_THE_PROFESSOR
 	call QuestUpdated
 	return
@@ -1453,7 +1466,7 @@ SpringwoodPond_SakurasLab_EventScript_Dex_Text_4:
 
 SpringwoodPond_SakurasLab_EventScript_Dex_Text_5:
 	.string "Bella: Isn't this cool, {PLAYER}?\p"
-	.string "Of course, I'll finish the Pokedex way\n"
+	.string "Of course, I'll finish the Pokédex way\n"
 	.string "before you, but it's nice that you get\l"
 	.string "to try!\p"
 	.string "I'll probably start by heading to\n"
@@ -1575,11 +1588,13 @@ MeetSakuraPart2_Text_0:
 	.string "With my latest invention, a Trainer will\n"
 	.string "be able to change their Pokéball at any\l"
 	.string "time, for any Pokémon! Isn't that\l"
-	.string "exciting? I know your mother won't let\l"
-	.string "you get a Pokémon yet, but I thought it\l"
-	.string "might cheer you up if you could be a\l"
-	.string "part of Pokémon history. Will you do\l"
-	.string "the honors of putting this last piece-$"
+	.string "exciting?\p"
+	.string "I know your mother won't let you get a\n"
+	.string "Pokémon yet, but I thought it might\l"
+	.string "cheer you up if you could be a part of\l"
+	.string "Pokémon history.\p"
+	.string "{PLAYER}, will you do the honors of\n"
+	.string "putting this last piece-$"
 
 MeetSakuraPart2_Text_1:
 	.string "???: I'll be taking that machine. We\n"
@@ -1587,7 +1602,8 @@ MeetSakuraPart2_Text_1:
 	.string "do, Professor!$"
 
 MeetSakuraPart2_Text_2:
-	.string "Sakura: Oh, goodness! This isn't good!\p"
+	.string "Sakura: Oh, goodness! This is really\n"
+	.string "bad!\p"
 	.string "I don't know who that was, but we need\n"
 	.string "to get that device back!\p"
 	.string "{PLAYER}, do you see those Pokéballs\n"

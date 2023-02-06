@@ -1236,7 +1236,7 @@ ALIGNED(4) const u8 gText_Facility[] = _("{STR_VAR_1}");
 const u8 gText_Give[] = _("Give");
 const u8 gText_NoNeed[] = _("No need");
 const u8 gText_ColorLightShadowDarkGray[] = _("{COLOR LIGHT_GRAY}{SHADOW DARK_GRAY}");
-const u8 gText_ColorBlue[] = _("{COLOR BLUE}");
+const u8 gText_ColorBlue[] = _("{COLOR BLUE}{SHADOW LIGHT_BLUE}");
 const u8 gText_ColorTransparent[] = _("{HIGHLIGHT TRANSPARENT}{COLOR TRANSPARENT}");
 const u8 gText_CDot[] = _("C.");
 const u8 gText_BDot[] = _("B.");
@@ -1864,7 +1864,7 @@ const u8 gText_SideQuestName_29[] = _("Side Quest 29");
 const u8 gText_SideQuestName_30[] = _("Side Quest 30");
 
 //descriptions
-const u8 gText_SideQuestDesc_1[] = _("Professor Sakura needs your help.\nGo and offer your assistance.");
+const u8 gText_SideQuestDesc_1[] = _("Prof. Sakura needs your help.\nGo and offer your assistance.");
 const u8 gText_SideQuestDesc_2[] = _("Travel across Rika and try to\nimprove as a Trainer.");
 const u8 gText_SideQuestDesc_3[] = _("Description 3");
 const u8 gText_SideQuestDesc_4[] = _("Description 4");

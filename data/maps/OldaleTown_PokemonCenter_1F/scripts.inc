@@ -6,7 +6,7 @@ OldaleTown_PokemonCenter_1F_MapScripts::
 	.byte 0
 
 OldaleTown_PokemonCenter_1F_OnTransition:
-	setrespawn HEAL_LOCATION_OLDALE_TOWN
+	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE
 	call Common_EventScript_UpdateBrineyLocation
 	end
 
@@ -40,25 +40,37 @@ OldaleTown_PokemonCenter_1F_EventScript_WirelessClubAvailable::
 	end
 
 OldaleTown_PokemonCenter_1F_Text_TrainersCanUsePC:
-	.string "That PC in the corner there is\n"
-	.string "for any POKéMON TRAINER to use.\p"
-	.string "Naturally, that means you're welcome\n"
-	.string "to use it, too.$"
+	.string "That PC at the counter over there\n"
+	.string "is very handy for Pokémon Trainers.\p"
+	.string "You can store items, check mail, and\n"
+	.string "transfer Pokémon, too.$"
 
 OldaleTown_PokemonCenter_1F_Text_PokemonCentersAreGreat:
-	.string "POKéMON CENTERS are great!\p"
-	.string "You can use their services as much\n"
-	.string "as you like, and it's all for free.\l"
-	.string "You never have to worry!$"
+	.string "Pokémon Centers are great for us\n"
+	.string "scientists.\p"
+	.string "They let us take care of Pokémon\n"
+	.string "and study their biology.$"
 
 OldaleTown_PokemonCenter_1F_Text_WirelessClubNotAvailable:
-	.string "The POKéMON WIRELESS CLUB on\n"
-	.string "the second floor was built recently.\p"
-	.string "But they say they're still making\n"
-	.string "adjustments.$"
+	.string "I hear Prof. Sakura is working on\n"
+	.string "a new Pokédex for Rika.\p"
+	.string "I wonder when they'll finish it?$"
 
 OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
-	.string "The POKéMON WIRELESS CLUB on\n"
-	.string "the second floor was built recently.\p"
-	.string "I traded POKéMON right away.$"
+	.string "I hear Prof. Sakura is working on\n"
+	.string "a new Pokédex for Rika.\p"
+	.string "Oh! You have it, there! Are you\n"
+	.string "filling it out for her?\p"
+	.string "If you are, good luck! Rika is a\n"
+	.string "big place.$"
+
+PokemartMain::
+	lock
+	faceplayer
+	msgbox gText_HowMayIServeYou
+	waitmessage
+	pokemart 0
+	msgbox gText_PleaseComeAgain
+	release
+	end
 

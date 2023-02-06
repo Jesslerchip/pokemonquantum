@@ -57,6 +57,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_SetAfterJohtoStarterLayout::
 
 LittlerootTown_ProfessorBirchsLab_OnWarp:
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, SpringwoodPond_SakurasLab_EventScript_SetObjectPosForDex
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, SpringwoodPond_SakurasLab_EventScript_SetObjectPosForDex
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForDexUpgrade
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_SetObjectPosForDexUpgrade
 	map_script_2 VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 3, LittlerootTown_ProfessorBirchsLab_EventScript_AddRivalObject
@@ -1049,10 +1050,11 @@ script SpringwoodPond_SakurasLab_EventScript_Dex {
 	closemessage
 	applymovement(BELLA, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
-	msgbox(format("Bella: Isn't this cool, {PLAYER}?\pOf course, I'll finish the Pokedex way before you, but it's nice that you get to try!\pI'll probably start by heading to Taproot Town through Springrock Path. I'll let you get a head start. You'll need it!"))
+	msgbox(format("Bella: Isn't this cool, {PLAYER}?\pOf course, I'll finish the Pokédex way before you, but it's nice that you get to try!\p"
+	"I'll probably start by heading to Taproot Town through Springrock Path. I'll let you get a head start. You'll need it!"))
 	closemessage
 	startquest(QUEST_A_SPOOKY_START)
-	completesubquest(QUEST_A_SPOOKY_START, SUB_QUEST_TUNNEL_TO_TAPROOT)
+	completesubquest(QUEST_A_SPOOKY_START, SUB_QUEST_1)
 	setvar(VAR_LITTLEROOT_INTRO_STATE, 6)
 	setflag(FLAG_HIDE_SPRINGWOOD_POND_SKITTY)
 	releaseall
@@ -1090,50 +1092,60 @@ script SpringwoodPond_SakurasLab_EventScript_Pokeball1 {
 
 script SpringwoodPond_SakurasLab_EventScript_Pokeball2 {
 	lockall
-	playmoncry(SPECIES_FENNEKIN, CRY_MODE_NORMAL)
-	showmonpic(SPECIES_FENNEKIN, 10, 3)
-	msgbox(format("Do you want Fennekin, the Fire Type Pokémon?"), MSGBOX_YESNO)
-	if (var(VAR_RESULT) == YES) {
-		givemon(SPECIES_FENNEKIN, 5, ITEM_ORAN_BERRY)
-		playfanfare(MUS_OBTAIN_ITEM)
-		msgbox(format("{PLAYER} received the Fennekin!"))
-		removeobject(BALL2)
-		setflag(FLAG_SYS_POKEMON_GET)
-		clearflag(FLAG_HIDE_SAKURAS_LAB_RIVAL)
-		addobject(BELLA)
-		bufferspeciesname(0, SPECIES_FENNEKIN)
-		call(NicknamePartyMon)
-		call(SpringwoodPond_SakurasLab_EventScript_FennekinChosen)
+	if(!flag(FLAG_SYS_POKEMON_GET)){
+		playmoncry(SPECIES_FENNEKIN, CRY_MODE_NORMAL)
+		showmonpic(SPECIES_FENNEKIN, 10, 3)
+		msgbox(format("Do you want Fennekin, the Fire Type Pokémon?"), MSGBOX_YESNO)
+		if (var(VAR_RESULT) == YES) {
+			givemon(SPECIES_FENNEKIN, 5, ITEM_ORAN_BERRY)
+			playfanfare(MUS_OBTAIN_ITEM)
+			msgbox(format("{PLAYER} received the Fennekin!"))
+			removeobject(BALL2)
+			setflag(FLAG_SYS_POKEMON_GET)
+			clearflag(FLAG_HIDE_SAKURAS_LAB_RIVAL)
+			addobject(BELLA)
+			bufferspeciesname(0, SPECIES_FENNEKIN)
+			call(NicknamePartyMon)
+			call(SpringwoodPond_SakurasLab_EventScript_FennekinChosen)
+		}
+		else {
+			hidemonpic
+			msgbox(format("Sakura: This is a very important decision, but please hurry!"))
+		}
 	}
 	else {
-		hidemonpic
-		msgbox(format("Sakura: This is a very important decision, but please hurry!"))
-	}
+		msgbox(format("Sakura: You already picked one! This is no time to be greedy!"))
+	}	
 	waitmessage
 	releaseall
 }
 
 script SpringwoodPond_SakurasLab_EventScript_Pokeball3 {
 	lockall
-	playmoncry(SPECIES_OSHAWOTT, CRY_MODE_NORMAL)
-	showmonpic(SPECIES_OSHAWOTT, 10, 3)
-	msgbox(format("Do you want Oshawott, the Water Type Pokémon?"), MSGBOX_YESNO)
-	if (var(VAR_RESULT) == YES) {
-		givemon(SPECIES_OSHAWOTT, 5, ITEM_ORAN_BERRY)
-		playfanfare(MUS_OBTAIN_ITEM)
-		msgbox(format("{PLAYER} received the Oshawott!"))
-		removeobject(BALL3)
-		setflag(FLAG_SYS_POKEMON_GET)
-		clearflag(FLAG_HIDE_SAKURAS_LAB_RIVAL)
-		addobject(BELLA)
-		bufferspeciesname(0, SPECIES_OSHAWOTT)
-		call(NicknamePartyMon)
-		call(SpringwoodPond_SakurasLab_EventScript_OshawottChosen)
+	if(!flag(FLAG_SYS_POKEMON_GET)){
+		playmoncry(SPECIES_OSHAWOTT, CRY_MODE_NORMAL)
+		showmonpic(SPECIES_OSHAWOTT, 10, 3)
+		msgbox(format("Do you want Oshawott, the Water Type Pokémon?"), MSGBOX_YESNO)
+		if (var(VAR_RESULT) == YES) {
+			givemon(SPECIES_OSHAWOTT, 5, ITEM_ORAN_BERRY)
+			playfanfare(MUS_OBTAIN_ITEM)
+			msgbox(format("{PLAYER} received the Oshawott!"))
+			removeobject(BALL3)
+			setflag(FLAG_SYS_POKEMON_GET)
+			clearflag(FLAG_HIDE_SAKURAS_LAB_RIVAL)
+			addobject(BELLA)
+			bufferspeciesname(0, SPECIES_OSHAWOTT)
+			call(NicknamePartyMon)
+			call(SpringwoodPond_SakurasLab_EventScript_OshawottChosen)
+		}
+		else {
+			hidemonpic
+			msgbox(format("Sakura: This is a very important decision, but please hurry!"))
+		}
 	}
 	else {
-		hidemonpic
-		msgbox(format("Sakura: This is a very important decision, but please hurry!"))
-	}
+		msgbox(format("Sakura: You already picked one! This is no time to be greedy!"))
+	}		
 	waitmessage
 	releaseall
 }
@@ -1168,13 +1180,15 @@ script SpringwoodPond_SakurasLab_EventScript_OshawottChosen {
 script SpringwoodPond_SakurasLab_EventScript_RivalSawPeon {
 	applymovement(BELLA, SpringwoodPond_SakurasLab_Movement_RivalEnters)
 	waitmovement(0)
+	applymovement(SAKURA, Common_Movement_WalkInPlaceLeft)
+	waitmovement(0)
 	msgbox(format("Bella: Prof. Sakura! Some guy ran off with that device you were making!\pI think they went down towards that cave on Route 1!"))
 	closemessage
-	applymovement(SAKURA, Common_Movement_WalkInPlaceDown)
+	applymovement(SAKURA, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
 	msgbox(format("Sakura: You saw them? Oh, thank goodness!\p{PLAYER}, Bella! Please, go find them and get back that precious technology!"))
 	closemessage
-	applymovement(BELLA, Common_Movement_WalkInPlaceUp)
+	applymovement(BELLA, Common_Movement_WalkInPlaceRight)
 	msgbox(format("Bella: You can count on me!"))
 	closemessage
 	applymovement(BELLA, SpringwoodPond_SakurasLab_Movement_RivalLeaves)
@@ -1183,7 +1197,7 @@ script SpringwoodPond_SakurasLab_EventScript_RivalSawPeon {
 	setflag(FLAG_HIDE_SAKURAS_LAB_RIVAL)
 	removeobject(BELLA)
 	setvar(VAR_LITTLEROOT_INTRO_STATE, 4)
-	completesubquest(QUEST_HELPING_THE_PROFESSOR, SUB_QUEST_IN_PURSUIT)
+	completesubquest(QUEST_HELPING_THE_PROFESSOR, SUB_QUEST_2)
 	questmenu(QUEST_MENU_BUFFER_QUEST_NAME, QUEST_HELPING_THE_PROFESSOR)
 	call(QuestUpdated)
 	return
@@ -1291,9 +1305,9 @@ script MeetSakuraPart1 {
 script MeetSakuraPart2 {
     msgbox(format("Sakura: Good to see you, {PLAYER}! You have impeccable timing!\p"
     "As you may know, a Pokéball binds itself to the Pokémon you capture with it. This means it is very important to capture a Pokémon using a ball you like, because it can never be changed.\p"
-    "Well, we seek to change it anyway!\pWith my latest invention, a Trainer will be able to change their Pokéball at any time, for any Pokémon! Isn't that exciting?"
-    "I know your mother won't let you get a Pokémon yet, but I thought it might cheer you up if you could be a part of Pokémon history."
-    "Will you do the honors of putting this last piece-"))
+    "Well, we seek to change it anyway!\pWith my latest invention, a Trainer will be able to change their Pokéball at any time, for any Pokémon! Isn't that exciting?\p"
+    "I know your mother won't let you get a Pokémon yet, but I thought it might cheer you up if you could be a part of Pokémon history.\p"
+    "{PLAYER}, will you do the honors of putting this last piece-"))
     closemessage
     playbgm(MUS_ENCOUNTER_MAGMA, 0)
     clearflag(FLAG_HIDE_SPRINGWOOD_POND_CIPHER_PEON_LAB)
@@ -1311,7 +1325,7 @@ script MeetSakuraPart2 {
     waitse
     applymovement(SAKURA, Common_Movement_WalkInPlaceFasterDown)
     waitmovement(0)
-    msgbox(format("Sakura: Oh, goodness! This isn't good!\pI don't know who that was, but we need to get that device back!\p{PLAYER}, do you see those Pokéballs scattered around?\p"
+    msgbox(format("Sakura: Oh, goodness! This is really bad!\pI don't know who that was, but we need to get that device back!\p{PLAYER}, do you see those Pokéballs scattered around?\p"
     "Please, grab one and chase after them!"))
     closemessage
     setvar(VAR_LITTLEROOT_INTRO_STATE, 3)

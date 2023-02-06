@@ -9,8 +9,6 @@ LittlerootTown_MaysHouse_1F_MapScripts::
 	.byte 0
 
 LittlerootTown_MaysHouse_1F_OnLoad:
-	call_if_lt VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_MaysHouse_1F_EventScript_SetMovingBoxes
-	call_if_set FLAG_RECEIVED_RUNNING_SHOES, LittlerootTown_MaysHouse_1F_EventScript_CheckShowShoesManual
 	end
 
 LittlerootTown_MaysHouse_1F_EventScript_SetMovingBoxes::
@@ -25,9 +23,7 @@ LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual::
 	return
 
 LittlerootTown_MaysHouse_1F_OnTransition:
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_MaysHouse_1F_EventScript_MoveMomToDoor
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_MaysHouse_1F_EventScript_MoveMomToStairs
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_MaysHouse_1F_EventScript_MoveMomToTV
+	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, Common_EventScript_SetupRivalGfxId
 	end
 
 LittlerootTown_MaysHouse_1F_EventScript_MoveMomToStairs::
@@ -418,7 +414,7 @@ SpringwoodPond_PlayersHouse_1F_EventScript_MomLeavingForTrip::
 	msgbox SpringwoodPond_PlayersHouse_1F_Text_MomLeavingForTrip1
 	setflag FLAG_SYS_QUEST_MENU_GET
 	startquest QUEST_HELPING_THE_PROFESSOR
-	completesubquest QUEST_HELPING_THE_PROFESSOR, SUB_QUEST_MEETING_SAKURA
+	completesubquest QUEST_HELPING_THE_PROFESSOR, SUB_QUEST_1
 	msgbox SpringwoodPond_PlayersHouse_1F_Text_MomLeavingForTrip2
 	closemessage
 	applymovement 1, SpringwoodPond_PlayersHouse_1F_Movement_MomLeavesPlayer
@@ -461,16 +457,16 @@ SpringwoodPond_PlayersHouse_1F_Movement_MomLeavesPlayer:
 SpringwoodPond_PlayersHouse_1F_Text_MomLeavingForTrip1::
 	.string "Mom: Sorry {PLAYER}, it's time for me\n"
 	.string "to go. I've spent a lot of time\l"
-	.string "preparing this presentation for\l"
-	.string "Professor Rowan. I don't want it to\l"
-	.string "have all been for nothing!\p"
+	.string "preparing this presentation for Prof.\l"
+	.string "Rowan. I don't want it to have all been\l"
+	.string "for nothing!\p"
 	.string "…Oh! That's right!\p"
-	.string "{PLAYER}, I think Professor Sakura\n"
-	.string "was looking for you. She said she\l"
-	.string "wanted some help with something. You'd\l"
-	.string "better head over to the Research\l"
-	.string "Institute. I think you can figure that\l"
-	.string "out using your Quests menu.$"
+	.string "{PLAYER}, I think Prof. Sakura was\n"
+	.string "looking for you. She said she wanted\l"
+	.string "some help with something. You'd better\l"
+	.string "head over to the Research Institute. I\l"
+	.string "think you can figure that out using\l"
+	.string "your Quests menu.$"
 
 SpringwoodPond_PlayersHouse_1F_Text_MomLeavingForTrip2::
 	.string "Mom: You can do whatever she asks, but\n"
@@ -482,5 +478,5 @@ SpringwoodPond_PlayersHouse_1F_Text_MomLeavingForTrip2::
 	.string "today isn't that day, so please stay\l"
 	.string "safe!\p"
 	.string "All right, {PLAYER}! I'll be back\n"
-	.string "before you know it. Be good for\l"
-	.string "Professor Sakura!$"
+	.string "before you know it. Be good for Prof.\l"
+	.string "Sakura!$"

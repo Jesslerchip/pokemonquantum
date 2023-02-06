@@ -4,4 +4,4 @@ QuestUpdated::
     return
 
 QuestUpdatedText:
-    .string "{COLOR GREEN}“{STR_VAR_1}” updated!$"
+    .string "{COLOR BLUE}{SHADOW LIGHT_BLUE}“{STR_VAR_1}” updated!$"

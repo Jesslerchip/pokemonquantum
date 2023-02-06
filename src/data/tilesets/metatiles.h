@@ -225,3 +225,6 @@ const u16 gMetatileAttributes_SakurasLab[] = INCBIN_U16("data/tilesets/secondary
 
 const u16 gMetatiles_NewCave[] = INCBIN_U16("data/tilesets/secondary/new_cave/metatiles.bin");
 const u16 gMetatileAttributes_NewCave[] = INCBIN_U16("data/tilesets/secondary/new_cave/metatile_attributes.bin");
+
+const u16 gMetatiles_PkmnCenter[] = INCBIN_U16("data/tilesets/secondary/pkmn_center/metatiles.bin");
+const u16 gMetatileAttributes_PkmnCenter[] = INCBIN_U16("data/tilesets/secondary/pkmn_center/metatile_attributes.bin");

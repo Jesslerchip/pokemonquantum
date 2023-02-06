@@ -6,7 +6,6 @@ GraniteCave_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Common_EventScript_SetupRivalGfxId
 	end
 
-
 MtDraco_1F_EventScript_Bella::
 	lockall
 	msgbox MtDraco_1F_EventScript_Bella_Text_0
@@ -67,7 +66,7 @@ MtDraco_1F_EventScript_AfterPeonBattle::
 	applymovement 4, MtDraco_1F_Movement_BellaApproach
 	waitmovement 0
 	msgbox MtDraco_1F_EventScript_AfterPeonBattle_Text_1
-	completesubquest QUEST_HELPING_THE_PROFESSOR, SUB_QUEST_EMPTY_HANDED
+	completesubquest QUEST_HELPING_THE_PROFESSOR, SUB_QUEST_3
 	questmenu QUEST_MENU_SET_REWARD, QUEST_HELPING_THE_PROFESSOR
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME, QUEST_HELPING_THE_PROFESSOR
 	call QuestUpdated

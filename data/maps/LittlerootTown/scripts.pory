@@ -16,7 +16,7 @@ script SpringwoodPond_EventScript_PlayersHouse {
 
 script SpringwoodPond_EventScript_SpringwoodPondSign {
 	lockall
-	msgbox(format("Springwood Pond\pHome of the famous Professor Sakura and her Research Institute!"))
+	msgbox(format("Springwood Pond\pHome of the famous Prof. Sakura and her Research Institute!"))
 	releaseall
 }
 
@@ -34,7 +34,7 @@ script SpringwoodPond_EventScript_SakurasHouse {
 
 script SpringwoodPond_EventScript_SakurasLab {
 	lockall
-	msgbox(format("Professor Sakura's Research Institute\pAccredited research facility for Pokémon science and technology"))
+	msgbox(format("Prof. Sakura's Research Institute\pAccredited research facility for Pokémon science and technology"))
 	releaseall
 }
 
@@ -42,7 +42,7 @@ script SpringwoodPond_EventScript_WaterMan {
 	lockall
 	faceplayer
 	msgbox(format("I'm studying the water quality of the pond. It's a very important job.\p"
-	"I come here every day to take notes on the Pokémon that live here to help Professor Sakura better understand the life cycle of Water Pokémon."))
+	"I come here every day to take notes on the Pokémon that live here to help Prof. Sakura better understand the life cycle of Water Pokémon."))
 	releaseall
 }
 
@@ -62,14 +62,14 @@ script SpringwoodPond_EventScript_WomanOnBench {
 script SpringwoodPond_EventScript_ManOnBench {
 	lockall
 	faceplayer
-	msgbox(format("Did you know Professor Sakura was once a Pokémon Trainer?\pIt's true! She even traveled with Champion Steven, from the Hoenn region!"))
+	msgbox(format("Did you know Prof. Sakura was once a Pokémon Trainer?\pIt's true! She even traveled with Champion Steven, from the Hoenn region!"))
 	releaseall
 }
 
 script SpringwoodPond_EventScript_WomanInFlowers {
 	lockall
 	faceplayer
-	msgbox(format("I'm doing a study on the way Pokémon interact with their environments.\pProfessor Sakura suggested flowers like these are a vital part "
+	msgbox(format("I'm doing a study on the way Pokémon interact with their environments.\pProf. Sakura suggested flowers like these are a vital part "
 	"of a Grass Pokémon's diet.\p I'm putting that to the test!"))
 	releaseall
 }
@@ -100,7 +100,7 @@ script SpringwoodPond_EventScript_FatMan {
 	lockall
 	faceplayer
 	if(!flag(FLAG_SYS_POKEMON_GET)) {
-		msgbox(format("Yo, {PLAYER}! Professor Sakura was looking for you.\pDon't keep her waiting!"))
+		msgbox(format("Yo, {PLAYER}! Prof. Sakura was looking for you.\pDon't keep her waiting!"))
 	}
 	elif(flag(FLAG_SAKURAS_LAB_CHAOS)) {
 		msgbox(format("Yo, {PLAYER}! I just saw some guy make off with a hunk of metal.\pSeemed pretty important. They went down Route 1, if you're looking for them."))
@@ -121,6 +121,6 @@ script SpringwoodPond_EventScript_SakuraNeedsYou {
 	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp)
 	waitmovement(0)
-	msgbox(format("I think Professor Sakura needed your help. You should head into the Research Institute and talk to her."))
+	msgbox(format("I think Prof. Sakura needed your help. You should head into the Research Institute and talk to her."))
 	releaseall
 }

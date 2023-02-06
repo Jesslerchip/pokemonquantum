@@ -186,6 +186,13 @@
       "elevation": 0,
       "dest_map": "MAP_LITTLEROOT_TOWN",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 5,
+      "y": 45,
+      "elevation": 0,
+      "dest_map": "MAP_OLDALE_TOWN_POKEMON_CENTER_1F",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
@@ -275,7 +282,7 @@
       "x": 18,
       "y": 33,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "SpringwoodPond_EventScript_SpringwoodPondSign"
     },
     {
@@ -283,7 +290,7 @@
       "x": 19,
       "y": 40,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "SpringwoodPond_EventScript_BellasHouse"
     },
     {
@@ -291,7 +298,7 @@
       "x": 28,
       "y": 44,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "SpringwoodPond_EventScript_SakurasHouse"
     },
     {
@@ -299,7 +306,7 @@
       "x": 30,
       "y": 54,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "SpringwoodPond_EventScript_SakurasLab"
     }
   ]

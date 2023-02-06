@@ -149,8 +149,8 @@ SpringwoodPond_EventScript_PlayersHouse_Text_0:
 
 SpringwoodPond_EventScript_SpringwoodPondSign_Text_0:
 	.string "Springwood Pond\p"
-	.string "Home of the famous Professor Sakura\n"
-	.string "and her Research Institute!$"
+	.string "Home of the famous Prof. Sakura and her\n"
+	.string "Research Institute!$"
 
 SpringwoodPond_EventScript_BellasHouse_Text_0:
 	.string "Bella's House$"
@@ -159,7 +159,7 @@ SpringwoodPond_EventScript_SakurasHouse_Text_0:
 	.string "Sakura's House$"
 
 SpringwoodPond_EventScript_SakurasLab_Text_0:
-	.string "Professor Sakura's Research Institute\p"
+	.string "Prof. Sakura's Research Institute\p"
 	.string "Accredited research facility for\n"
 	.string "Pokémon science and technology$"
 
@@ -168,8 +168,8 @@ SpringwoodPond_EventScript_WaterMan_Text_0:
 	.string "pond. It's a very important job.\p"
 	.string "I come here every day to take notes on\n"
 	.string "the Pokémon that live here to help\l"
-	.string "Professor Sakura better understand\l"
-	.string "the life cycle of Water Pokémon.$"
+	.string "Prof. Sakura better understand the\l"
+	.string "life cycle of Water Pokémon.$"
 
 SpringwoodPond_EventScript_Skitty_Text_0:
 	.string "Skitty: Prrr…\p"
@@ -183,8 +183,8 @@ SpringwoodPond_EventScript_WomanOnBench_Text_0:
 	.string "the peaceful scenery is worth it.$"
 
 SpringwoodPond_EventScript_ManOnBench_Text_0:
-	.string "Did you know Professor Sakura was once\n"
-	.string "a Pokémon Trainer?\p"
+	.string "Did you know Prof. Sakura was once a\n"
+	.string "Pokémon Trainer?\p"
 	.string "It's true! She even traveled with\n"
 	.string "Champion Steven, from the Hoenn\l"
 	.string "region!$"
@@ -192,8 +192,8 @@ SpringwoodPond_EventScript_ManOnBench_Text_0:
 SpringwoodPond_EventScript_WomanInFlowers_Text_0:
 	.string "I'm doing a study on the way Pokémon\n"
 	.string "interact with their environments.\p"
-	.string "Professor Sakura suggested flowers\n"
-	.string "like these are a vital part of a Grass\l"
+	.string "Prof. Sakura suggested flowers like\n"
+	.string "these are a vital part of a Grass\l"
 	.string "Pokémon's diet.\p"
 	.string "I'm putting that to the test!$"
 
@@ -215,8 +215,8 @@ SpringwoodPond_EventScript_CipherPeon2_Text_0:
 	.string "Butt out, or else!$"
 
 SpringwoodPond_EventScript_FatMan_Text_0:
-	.string "Yo, {PLAYER}! Professor Sakura was\n"
-	.string "looking for you.\p"
+	.string "Yo, {PLAYER}! Prof. Sakura was looking\n"
+	.string "for you.\p"
 	.string "Don't keep her waiting!$"
 
 SpringwoodPond_EventScript_FatMan_Text_1:
@@ -237,6 +237,6 @@ SpringwoodPond_EventScript_SakuraNeedsYou_Text_0:
 	.string "Yo, {PLAYER}! Where are you going?$"
 
 SpringwoodPond_EventScript_SakuraNeedsYou_Text_1:
-	.string "I think Professor Sakura needed your\n"
-	.string "help. You should head into the\l"
-	.string "Research Institute and talk to her.$"
+	.string "I think Prof. Sakura needed your help.\n"
+	.string "You should head into the Research\l"
+	.string "Institute and talk to her.$"

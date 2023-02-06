@@ -891,3 +891,14 @@ const struct Tileset gTileset_NewCave =
     .metatileAttributes = gMetatileAttributes_NewCave,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_PkmnCenter =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PkmnCenter,
+    .palettes = gTilesetPalettes_PkmnCenter,
+    .metatiles = gMetatiles_PkmnCenter,
+    .metatileAttributes = gMetatileAttributes_PkmnCenter,
+    .callback = NULL,
+};

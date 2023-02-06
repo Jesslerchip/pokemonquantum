@@ -9,8 +9,6 @@ LittlerootTown_MaysHouse_1F_MapScripts::
 	.byte 0
 
 LittlerootTown_MaysHouse_1F_OnLoad:
-	call_if_lt VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_MaysHouse_1F_EventScript_SetMovingBoxes
-	call_if_set FLAG_RECEIVED_RUNNING_SHOES, LittlerootTown_MaysHouse_1F_EventScript_CheckShowShoesManual
 	end
 
 LittlerootTown_MaysHouse_1F_EventScript_SetMovingBoxes::
@@ -25,9 +23,7 @@ LittlerootTown_MaysHouse_1F_EventScript_ShowRunningShoesManual::
 	return
 
 LittlerootTown_MaysHouse_1F_OnTransition:
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_MaysHouse_1F_EventScript_MoveMomToDoor
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_MaysHouse_1F_EventScript_MoveMomToStairs
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_MaysHouse_1F_EventScript_MoveMomToTV
+	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, Common_EventScript_SetupRivalGfxId
 	end
 
 LittlerootTown_MaysHouse_1F_EventScript_MoveMomToStairs::
@@ -421,7 +417,7 @@ script SpringwoodPond_PlayersHouse_1F_EventScript_MomLeavingForTrip {
     msgbox(SpringwoodPond_PlayersHouse_1F_Text_MomLeavingForTrip1)
     setflag(FLAG_SYS_QUEST_MENU_GET)
     startquest(QUEST_HELPING_THE_PROFESSOR)
-	completesubquest(QUEST_HELPING_THE_PROFESSOR, SUB_QUEST_MEETING_SAKURA)
+	completesubquest(QUEST_HELPING_THE_PROFESSOR, SUB_QUEST_1)
     msgbox(SpringwoodPond_PlayersHouse_1F_Text_MomLeavingForTrip2)
 	closemessage
     applymovement(MOM, SpringwoodPond_PlayersHouse_1F_Movement_MomLeavesPlayer)
@@ -452,8 +448,8 @@ movement SpringwoodPond_PlayersHouse_1F_Movement_MomLeavesPlayer {
 
 text SpringwoodPond_PlayersHouse_1F_Text_MomLeavingForTrip1 {
     format("Mom: Sorry {PLAYER}, it's time for me to go. I've spent a lot of time preparing"
-    " this presentation for Professor Rowan. I don't want it to have all been for nothing!\p…Oh!"
-    " That's right!\p{PLAYER}, I think Professor Sakura was looking for you. She said she wanted some"
+    " this presentation for Prof. Rowan. I don't want it to have all been for nothing!\p…Oh!"
+    " That's right!\p{PLAYER}, I think Prof. Sakura was looking for you. She said she wanted some"
     " help with something. You'd better head over to the Research Institute. I think you can figure that"
 	" out using your Quests menu.")
 }
@@ -462,5 +458,5 @@ text SpringwoodPond_PlayersHouse_1F_Text_MomLeavingForTrip2 {
     format("Mom: You can do whatever she asks, but don't leave Springwood Pond. Understood?\pIt's too"
     " dangerous without a Pokémon of your own. Someday, you'll be able to choose your very own partner."
     " But today isn't that day, so please stay safe!\pAll right, {PLAYER}! I'll be back before you know it."
-    " Be good for Professor Sakura!")
+    " Be good for Prof. Sakura!")
 }
