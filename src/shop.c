@@ -173,6 +173,7 @@ static const u16 sShopInventory_ZeroBadges[] = {
     ITEM_ZINC,
     ITEM_CARBOS,
     ITEM_PP_UP,
+    ITEM_NONE
 };
 
 static const u16 sShopInventory_OneBadge[] = {
@@ -198,6 +199,7 @@ static const u16 sShopInventory_OneBadge[] = {
     ITEM_HONDEW_BERRY,
     ITEM_GREPA_BERRY,
     ITEM_TAMATO_BERRY,
+    ITEM_NONE
 };
 
 static const u16 sShopInventory_TwoBadges[] = {
@@ -236,6 +238,7 @@ static const u16 sShopInventory_TwoBadges[] = {
     ITEM_HONDEW_BERRY,
     ITEM_GREPA_BERRY,
     ITEM_TAMATO_BERRY,
+    ITEM_NONE
 };
 
 static const u16 sShopInventory_ThreeBadges[] = {
@@ -275,6 +278,7 @@ static const u16 sShopInventory_ThreeBadges[] = {
     ITEM_HONDEW_BERRY,
     ITEM_GREPA_BERRY,
     ITEM_TAMATO_BERRY,
+    ITEM_NONE
 };
 
 static const u16 sShopInventory_FourBadges[] = {
@@ -314,6 +318,7 @@ static const u16 sShopInventory_FourBadges[] = {
     ITEM_HONDEW_BERRY,
     ITEM_GREPA_BERRY,
     ITEM_TAMATO_BERRY,
+    ITEM_NONE
 };
 
 static const u16 sShopInventory_FiveBadges[] = {
@@ -361,6 +366,7 @@ static const u16 sShopInventory_FiveBadges[] = {
     ITEM_HONDEW_BERRY,
     ITEM_GREPA_BERRY,
     ITEM_TAMATO_BERRY,
+    ITEM_NONE
 };
 
 static const u16 sShopInventory_SixBadges[] = {
@@ -408,6 +414,7 @@ static const u16 sShopInventory_SixBadges[] = {
     ITEM_HONDEW_BERRY,
     ITEM_GREPA_BERRY,
     ITEM_TAMATO_BERRY,
+    ITEM_NONE
 };
 
 static const u16 sShopInventory_SevenBadges[] = {
@@ -455,6 +462,7 @@ static const u16 sShopInventory_SevenBadges[] = {
     ITEM_HONDEW_BERRY,
     ITEM_GREPA_BERRY,
     ITEM_TAMATO_BERRY,
+    ITEM_NONE
 };
 
 static const u16 sShopInventory_EightBadges[] = {
@@ -502,6 +510,7 @@ static const u16 sShopInventory_EightBadges[] = {
     ITEM_HONDEW_BERRY,
     ITEM_GREPA_BERRY,
     ITEM_TAMATO_BERRY,
+    ITEM_NONE
 };
 
 static const u16 *const sShopInventories[] = {

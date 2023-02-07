@@ -2053,7 +2053,7 @@ extern const u8 gPCText_Machine[];
 extern const u8 gPCText_Simple[];
 extern const u8 gText_PartyFull[];
 extern const u8 gText_Box[];
-extern const u8 gText_JustOnePkmn[];
+extern const u8 gText_JustTwoPkmn[];
 
 // battle main
 extern const u8 gText_LinkStandby3[];
@@ -3229,5 +3229,9 @@ extern const u8 gText_YourName[];
 extern const u8 gText_BoxName[];
 extern const u8 gText_PkmnsNickname[];
 extern const u8 gText_TellHimTheWords[];
+
+// Exp. Share
+extern const u8 gText_ExpShareOn[];
+extern const u8 gText_ExpShareOff[];
 
 #endif // GUARD_STRINGS_H

@@ -228,3 +228,6 @@ const u16 gMetatileAttributes_NewCave[] = INCBIN_U16("data/tilesets/secondary/ne
 
 const u16 gMetatiles_PkmnCenter[] = INCBIN_U16("data/tilesets/secondary/pkmn_center/metatiles.bin");
 const u16 gMetatileAttributes_PkmnCenter[] = INCBIN_U16("data/tilesets/secondary/pkmn_center/metatile_attributes.bin");
+
+const u16 gMetatiles_SpectreCity[] = INCBIN_U16("data/tilesets/secondary/spectre_city/metatiles.bin");
+const u16 gMetatileAttributes_SpectreCity[] = INCBIN_U16("data/tilesets/secondary/spectre_city/metatile_attributes.bin");

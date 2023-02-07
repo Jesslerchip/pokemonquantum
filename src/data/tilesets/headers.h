@@ -902,3 +902,14 @@ const struct Tileset gTileset_PkmnCenter =
     .metatileAttributes = gMetatileAttributes_PkmnCenter,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_SpectreCity =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SpectreCity,
+    .palettes = gTilesetPalettes_SpectreCity,
+    .metatiles = gMetatiles_SpectreCity,
+    .metatileAttributes = gMetatileAttributes_SpectreCity,
+    .callback = NULL,
+};

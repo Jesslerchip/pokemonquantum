@@ -530,3 +530,66 @@ RusturfTunnel_Text_MikePostBattle:
 	.string "protect POKéMON, right?\l"
 	.string "There's a feel-good story!$"
 
+SpringrockPath_EventScript_ItemHealBall::
+	finditem ITEM_HEAL_BALL
+	return
+
+
+SpringrockPath_EventScript_ItemTM76::
+	finditem ITEM_TM76
+	return
+
+
+SpringrockPath_EventScript_Mike::
+	trainerbattle_single TRAINER_MIKE, SpringrockPath_Text_MikeIntro, SpringrockPath_Text_MikeDefeat
+	msgbox SpringrockPath_Text_MikePostBattle, MSGBOX_AUTOCLOSE
+	end
+
+
+SpringrockPath_EventScript_John::
+	trainerbattle_single TRAINER_JOHN, SpringrockPath_Text_JohnIntro, SpringrockPath_Text_JohnDefeat
+	msgbox SpringrockPath_Text_JohnPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+
+SpringrockPath_EventScript_Paul::
+	trainerbattle_single TRAINER_PAUL, SpringrockPath_Text_PaulIntro, SpringrockPath_Text_PaulDefeat
+	msgbox SpringrockPath_Text_PaulPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+
+SpringrockPath_Text_MikeIntro::
+	.string "Haha! Did I surprise you?\p"
+	.string "Now that we've locked eyes, you're\n"
+	.string "obligated to battle me!$"
+
+SpringrockPath_Text_MikeDefeat::
+	.string "Oh, man! I should've kept quiet!$"
+
+SpringrockPath_Text_MikePostBattle::
+	.string "Hey, you're really good! Where did you\n"
+	.string "learn to battle like that?$"
+
+SpringrockPath_Text_JohnIntro::
+	.string "Well, hello! Did you come to explore, or\n"
+	.string "battle?$"
+
+SpringrockPath_Text_JohnDefeat::
+	.string "I guess I should stick to exploring!$"
+
+SpringrockPath_Text_JohnPostBattle::
+	.string "Exploring is more fun than battling, in\n"
+	.string "my opinion. Sometimes, you can find\l"
+	.string "rare items just laying around!$"
+
+SpringrockPath_Text_PaulIntro::
+	.string "Hey, you! Are you a Pokémon Trainer? We\n"
+	.string "should battle!$"
+
+SpringrockPath_Text_PaulDefeat::
+	.string "We shouldn't have battled…$"
+
+SpringrockPath_Text_PaulPostBattle::
+	.string "I only like battling when I know I'll win.\p"
+	.string "You should have let me win so I could\n"
+	.string "have more fun.$"

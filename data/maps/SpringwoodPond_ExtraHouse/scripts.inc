@@ -3,10 +3,10 @@ SpringwoodPond_ExtraHouse_MapScripts::
 
 
 SpringwoodPond_ExtraHouse_EventScript_SakurasWife::
-	lockall
+	lock
 	faceplayer
 	msgbox SpringwoodPond_ExtraHouse_EventScript_SakurasWife_Text_0
-	releaseall
+	release
 	return
 
 

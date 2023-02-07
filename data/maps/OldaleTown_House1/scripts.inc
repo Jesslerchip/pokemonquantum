@@ -1,15 +1,17 @@
 OldaleTown_House1_MapScripts::
 	.byte 0
 
-OldaleTown_House1_EventScript_Woman::
-	msgbox OldaleTown_House1_Text_LeftPokemonGoesOutFirst, MSGBOX_NPC
-	end
 
-OldaleTown_House1_Text_LeftPokemonGoesOutFirst:
-	.string "When a POKéMON battle starts, the one\n"
-	.string "at the left of the list goes out first.\p"
-	.string "So, when you get more POKéMON in your\n"
-	.string "party, try switching around the order\l"
-	.string "of your POKéMON.\p"
-	.string "It could give you an advantage.$"
+TaprootTown_House1_EventScript_Man::
+	lockall
+	faceplayer
+	msgbox TaprootTown_House1_EventScript_Man_Text_0
+	releaseall
+	return
 
+
+TaprootTown_House1_EventScript_Man_Text_0:
+	.string "I love Taproot Town, but I'd like to get\n"
+	.string "out and journey across Rika.\p"
+	.string "I just don't like the cold, so I don't\n"
+	.string "have much of an incentive to leave!$"

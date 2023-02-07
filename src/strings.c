@@ -943,7 +943,7 @@ const u8 gText_DepositMonDescription[] = _("Store POKéMON in your party in BOXE
 const u8 gText_MoveMonDescription[] = _("Organize the POKéMON in BOXES and\nin your party.");
 const u8 gText_MoveItemsDescription[] = _("Move items held by any POKéMON\nin a BOX or your party.");
 const u8 gText_SeeYaDescription[] = _("Return to the previous menu.");
-const u8 gText_JustOnePkmn[] = _("There is just one POKéMON with you.");
+const u8 gText_JustTwoPkmn[] = _("You can't deposit any Pokémon.\nYou won't have enough party members!");
 const u8 gText_PartyFull[] = _("Your party is full!");
 const u8 gText_Box[] = _("BOX");
 const u8 gText_CheckMapOfHoenn[] = _("Check the map of the HOENN region.");
@@ -1990,7 +1990,7 @@ const u8 gText_SubQuest1_Desc2[] = _("Chase down the thief and retrieve\nthe los
 const u8 gText_SubQuest1_Desc3[] = _("Return to Prof. Sakura and let her\nknow the device is gone.");
 
 const u8 gText_SubQuest2_Desc1[] = _("Race Bella to Taproot Town and try\ncatching Pokémon along the way.");
-const u8 gText_SubQuest2_Desc2[] = _("Defeat the mysterious Ravynn and\nfind out what he's up to.");
+const u8 gText_SubQuest2_Desc2[] = _("Defeat the mysterious figure and\nfind out what he's up to.");
 const u8 gText_SubQuest2_Desc3[] = _("Make your way to Spectre City and\nfind the Team Quantum thief.");
 const u8 gText_SubQuest2_Desc4[] = _("Defeat your rival outside the Gym\nin Spectre City.");
 const u8 gText_SubQuest2_Desc5[] = _("Challenge your first Gym and collect\nthe Spectre City Gym Badge.");
@@ -2009,3 +2009,6 @@ const u8 gText_SubQuest2_Desc17[] = _("Description Sub 17");
 const u8 gText_SubQuest2_Desc18[] = _("Description Sub 18");
 const u8 gText_SubQuest2_Desc19[] = _("Description Sub 19");
 const u8 gText_SubQuest2_Desc20[] = _("Description Sub 20");
+// Exp. Share
+const u8 gText_ExpShareOn[] = _("Turned on the Exp. Share.\pParty will now gain a portion\nof the Experience Points.{PAUSE_UNTIL_PRESS}");
+const u8 gText_ExpShareOff[] = _("Turned off the Exp. Share.\pParty will no longer gain a portion\nof any Experience Points.{PAUSE_UNTIL_PRESS}");

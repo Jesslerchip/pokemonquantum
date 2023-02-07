@@ -1,10 +1,10 @@
 mapscripts SpringwoodPond_ExtraHouse_MapScripts {}
 
 script SpringwoodPond_ExtraHouse_EventScript_SakurasWife {
-    lockall
+    lock
     faceplayer
     msgbox(format("Oh, are you looking for my wife? She's usually in her "
     "Research Institute doing some kind of important work. I do wish she'd "
     "take a break once in a while, but she can't help being passionate."))
-    releaseall
+    release
 }

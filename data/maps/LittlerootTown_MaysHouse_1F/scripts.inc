@@ -45,7 +45,6 @@ LittlerootTown_MaysHouse_1F_EventScript_MoveMomToDoor::
 LittlerootTown_MaysHouse_1F_OnFrame:
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 1, SpringwoodPond_PlayersHouse_1F_EventScript_MomLeavingForTrip
 	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_MaysHouse_1F_EventScript_GoUpstairsToSetClock
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_MaysHouse_1F_EventScript_PetalburgGymReport
 	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 1, LittlerootTown_MaysHouse_1F_EventScript_YoureNewNeighbor
 	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_MAY, 3, PlayersHouse_1F_EventScript_GetSSTicketAndSeeLatiTV
 	.2byte 0
@@ -71,13 +70,6 @@ LittlerootTown_MaysHouse_1F_EventScript_EnterHouseMovingIn::
 	setvar VAR_0x8004, LOCALID_MOM
 	setvar VAR_0x8005, FEMALE
 	goto PlayersHouse_1F_EventScript_EnterHouseMovingIn
-	end
-
-LittlerootTown_MaysHouse_1F_EventScript_PetalburgGymReport::
-	lockall
-	setvar VAR_0x8004, FEMALE
-	setvar VAR_0x8005, LOCALID_MOM
-	goto PlayersHouse_1F_EventScript_PetalburgGymReportFemale
 	end
 
 LittlerootTown_MaysHouse_1F_EventScript_YoureNewNeighbor::
@@ -411,6 +403,8 @@ SpringwoodPond_PlayersHouse_1F_EventScript_MomLeavingForTrip::
 	delay 48
 	applymovement 1, SpringwoodPond_PlayersHouse_1F_Movement_MomApproachesPlayer
 	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
+	waitmovement 0
 	msgbox SpringwoodPond_PlayersHouse_1F_Text_MomLeavingForTrip1
 	setflag FLAG_SYS_QUEST_MENU_GET
 	startquest QUEST_HELPING_THE_PROFESSOR
@@ -419,11 +413,14 @@ SpringwoodPond_PlayersHouse_1F_EventScript_MomLeavingForTrip::
 	closemessage
 	applymovement 1, SpringwoodPond_PlayersHouse_1F_Movement_MomLeavesPlayer
 	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
+	waitmovement 0
 	removeobject 1
 	setflag FLAG_HIDE_SPRINGWOOD_POND_MOM
 	setvar VAR_LITTLEROOT_INTRO_STATE, 2
 	setflag FLAG_HIDE_SPRINGWOOD_POND_CIPHER_PEON_LAB
 	setflag FLAG_HIDE_SAKURAS_LAB_RIVAL
+	setflag FLAG_HIDE_SPRINGWOOD_POND_MART
 	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_MAYS_HOUSE
 	playse SE_EXIT
 	waitse
@@ -436,13 +433,15 @@ SpringwoodPond_PlayersHouse_1F_Movement_MomApproachesPlayer:
 	walk_up
 	walk_up
 	walk_up
-	walk_left
-	walk_in_place_fast_up
+	walk_up
+	walk_in_place_left
 	step_end
 
 SpringwoodPond_PlayersHouse_1F_Movement_MomLeavesPlayer:
 	walk_down
 	walk_down
+	walk_down
+	walk_left
 	walk_left
 	walk_left
 	walk_left

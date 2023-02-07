@@ -533,7 +533,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
 	setvar VAR_BIRCH_LAB_STATE, 5
 	setflag FLAG_ADVENTURE_STARTED
-	setvar VAR_OLDALE_TOWN_STATE, 1
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 4
 	setvar VAR_LITTLEROOT_TOWN_STATE, 3
 	releaseall
@@ -1035,14 +1034,19 @@ SpringwoodPond_SakurasLab_EventScript_Dex::
 	giveitem ITEM_EXP_SHARE
 	msgbox SpringwoodPond_SakurasLab_EventScript_Dex_Text_4
 	closemessage
+	giveitem ITEM_POKE_BALL, 5
+	msgbox SpringwoodPond_SakurasLab_EventScript_Dex_Text_5
 	applymovement 9, Common_Movement_WalkInPlaceDown
 	waitmovement 0
-	msgbox SpringwoodPond_SakurasLab_EventScript_Dex_Text_5
+	msgbox SpringwoodPond_SakurasLab_EventScript_Dex_Text_6
 	closemessage
 	startquest QUEST_A_SPOOKY_START
 	completesubquest QUEST_A_SPOOKY_START, SUB_QUEST_1
 	setvar VAR_LITTLEROOT_INTRO_STATE, 6
-	setflag FLAG_HIDE_SPRINGWOOD_POND_SKITTY
+	setflag FLAG_HIDE_SPRINGWOOD_POND_RESEARCHER
+	clearflag FLAG_HIDE_SPRINGWOOD_POND_MART
+	clearflag FLAG_HIDE_ROUTE_2_RIVAL
+	setvar VAR_ROUTE2_STATE, 0
 	releaseall
 	return
 
@@ -1189,6 +1193,8 @@ SpringwoodPond_SakurasLab_EventScript_RivalSawPeon::
 	closemessage
 	applymovement 9, SpringwoodPond_SakurasLab_Movement_RivalLeaves
 	waitmovement 0
+	applymovement 1, Common_Movement_WalkInPlaceDown
+	waitmovement 0
 	playse SE_EXIT
 	setflag FLAG_HIDE_SAKURAS_LAB_RIVAL
 	removeobject 9
@@ -1196,6 +1202,7 @@ SpringwoodPond_SakurasLab_EventScript_RivalSawPeon::
 	completesubquest QUEST_HELPING_THE_PROFESSOR, SUB_QUEST_2
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME, QUEST_HELPING_THE_PROFESSOR
 	call QuestUpdated
+	closemessage
 	return
 
 
@@ -1214,12 +1221,12 @@ SpringwoodPond_SakurasLab_EventScript_Scientist1_2:
 
 
 SpringwoodPond_SakurasLab_EventScript_Scientist2::
-	lockall
+	lock
 	faceplayer
 	goto_if_set FLAG_SAKURAS_LAB_CHAOS, SpringwoodPond_SakurasLab_EventScript_Scientist2_2
 	msgbox SpringwoodPond_SakurasLab_EventScript_Scientist2_Text_1
 SpringwoodPond_SakurasLab_EventScript_Scientist2_1:
-	releaseall
+	release
 	return
 
 SpringwoodPond_SakurasLab_EventScript_Scientist2_2:
@@ -1228,12 +1235,12 @@ SpringwoodPond_SakurasLab_EventScript_Scientist2_2:
 
 
 SpringwoodPond_SakurasLab_EventScript_Scientist3::
-	lockall
+	lock
 	faceplayer
 	goto_if_set FLAG_SAKURAS_LAB_CHAOS, SpringwoodPond_SakurasLab_EventScript_Scientist3_2
 	msgbox SpringwoodPond_SakurasLab_EventScript_Scientist3_Text_1
 SpringwoodPond_SakurasLab_EventScript_Scientist3_1:
-	releaseall
+	release
 	return
 
 SpringwoodPond_SakurasLab_EventScript_Scientist3_2:
@@ -1241,14 +1248,22 @@ SpringwoodPond_SakurasLab_EventScript_Scientist3_2:
 	goto SpringwoodPond_SakurasLab_EventScript_Scientist3_1
 
 
+SpringwoodPond_SakurasLab_EventScript_Bella::
+	lock
+	faceplayer
+	msgbox SpringwoodPond_SakurasLab_EventScript_Bella_Text_0
+	release
+	return
+
+
 SpringwoodPond_SakurasLab_EventScript_Sakura::
-	lockall
+	lock
 	faceplayer
 	goto_if_set FLAG_SYS_POKEMON_GET, SpringwoodPond_SakurasLab_EventScript_Sakura_2
 	goto_if_set FLAG_SAKURAS_LAB_CHAOS, SpringwoodPond_SakurasLab_EventScript_Sakura_3
 	msgbox SpringwoodPond_SakurasLab_EventScript_Sakura_Text_3
 SpringwoodPond_SakurasLab_EventScript_Sakura_1:
-	releaseall
+	release
 	return
 
 SpringwoodPond_SakurasLab_EventScript_Sakura_2:
@@ -1316,6 +1331,8 @@ MeetSakuraPart2::
 	clearflag FLAG_HIDE_SPRINGWOOD_POND_CIPHER_PEON_LAB
 	addobject 8
 	applymovement 8, SpringwoodPond_SakurasLab_Movement_PeonApproaches
+	waitmovement 0
+	applymovement 1, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	msgbox MeetSakuraPart2_Text_1
 	closemessage
@@ -1453,18 +1470,25 @@ SpringwoodPond_SakurasLab_EventScript_Dex_Text_2:
 	.string "Pokédex!$"
 
 SpringwoodPond_SakurasLab_EventScript_Dex_Text_3:
-	.string "Oh, and, here! As an added bonus for\n"
-	.string "helping out today, you can have this.$"
+	.string "Sakura: Oh, and, here! As an added bonus\n"
+	.string "for helping out today, you can have\l"
+	.string "this.$"
 
 SpringwoodPond_SakurasLab_EventScript_Dex_Text_4:
 	.string "Sakura: The Exp. Share is a device that\n"
 	.string "I'm certain will help you along the way.\l"
 	.string "You'll need to get stronger if you want\l"
 	.string "to travel far from here.\p"
+	.string "And these…$"
+
+SpringwoodPond_SakurasLab_EventScript_Dex_Text_5:
+	.string "Sakura: These are called Pokéballs.\n"
+	.string "They capture Pokémon so you can\l"
+	.string "record their data in the Pokédex.\p"
 	.string "Anyway, are you ready, {PLAYER}? Go\n"
 	.string "on out there and fill that Pokédex!$"
 
-SpringwoodPond_SakurasLab_EventScript_Dex_Text_5:
+SpringwoodPond_SakurasLab_EventScript_Dex_Text_6:
 	.string "Bella: Isn't this cool, {PLAYER}?\p"
 	.string "Of course, I'll finish the Pokédex way\n"
 	.string "before you, but it's nice that you get\l"
@@ -1504,10 +1528,13 @@ SpringwoodPond_SakurasLab_EventScript_Pokeball3_Text_1:
 	.string "{PLAYER} received the Oshawott!$"
 
 SpringwoodPond_SakurasLab_EventScript_RivalSawPeon_Text_0:
-	.string "Bella: Prof. Sakura! Some guy ran off\n"
-	.string "with that device you were making!\p"
-	.string "I think they went down towards that\n"
-	.string "cave on Route 1!$"
+	.string "Bella: Prof. Sakura! My Skitty came\n"
+	.string "inside the house all scared and stuff,\l"
+	.string "so I went out to look.\p"
+	.string "Some guy was running off with that\n"
+	.string "device you were making! They went out\l"
+	.string "towards that cave on Route 1! What\l"
+	.string "should we do?$"
 
 SpringwoodPond_SakurasLab_EventScript_RivalSawPeon_Text_1:
 	.string "Sakura: You saw them? Oh, thank\n"
@@ -1551,13 +1578,20 @@ SpringwoodPond_SakurasLab_EventScript_Scientist3_Text_1:
 	.string "hand if she didn't have someone like me\l"
 	.string "around!$"
 
+SpringwoodPond_SakurasLab_EventScript_Bella_Text_0:
+	.string "Bella: Go on, get yourself over to\n"
+	.string "Taproot Town!\p"
+	.string "I'll head over in a bit. You won't make it\n"
+	.string "there before me either way!$"
+
 SpringwoodPond_SakurasLab_EventScript_Sakura_Text_0:
 	.string "Sakura: Go, give chase! They probably\n"
 	.string "made a break for it towards the cave on\l"
 	.string "Route 1!$"
 
 SpringwoodPond_SakurasLab_EventScript_Sakura_Text_1:
-	.string "Sakura: This is a placeholder.$"
+	.string "Sakura: Go on, {PLAYER}! Get out\n"
+	.string "there and fill that Pokédex!$"
 
 SpringwoodPond_SakurasLab_EventScript_Sakura_Text_2:
 	.string "Sakura: What are you waiting for? Grab\n"

@@ -1,0 +1,8 @@
+mapscripts OldaleTown_House1_MapScripts {}
+
+script TaprootTown_House1_EventScript_Man {
+    lockall
+    faceplayer
+    msgbox(format("I love Taproot Town, but I'd like to get out and journey across Rika.\pI just don't like the cold, so I don't have much of an incentive to leave!"))
+    releaseall
+}

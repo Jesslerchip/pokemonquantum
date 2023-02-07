@@ -13,7 +13,7 @@ script Route1_EventScript_CaveSign{
 }
 
 script Route1_EventScript_StatsGuy {
-    lockall
+    lock
     faceplayer
     msgbox(format("Oh, hi! Did you want to hear about the different Pokémon stats?"), MSGBOX_YESNO)
     if(var(VAR_RESULT) == YES) {
@@ -30,21 +30,21 @@ script Route1_EventScript_StatsGuy {
     else {
         msgbox(format("Yeah, it's pretty complicated. You're probably not smart enough to understand it like real Trainers do."))
     }
-    releaseall
+    release
 }
 
 script Route1_EventScript_Woman {
-    lockall
+    lock
     faceplayer
     msgbox(format("I'm looking for Pokémon in the tall grass.\pSome are more rare than others, you know. I really want a Skitty, but they're super hard to find!"))
-    releaseall
+    release
 }
 
 script Route1_EventScript_Youngster {
-    lockall
+    lock
     faceplayer
     msgbox(format("Hi! I like shorts!\pThey're actually quite durable, and they really help in warm weather. Long pants are great if you're trying to crawl through "
     "all that tall grass, but if you just want to enjoy a nice, summer day? I think shorts are honestly the best pick. Really, you can wear whatever you'd like- I enjoy "
     "shorts, but anyone is free to choose any outfit they want! All I'm saying is, be yourself- but shorts will help you be your best self."))
-    releaseall
+    release
 }

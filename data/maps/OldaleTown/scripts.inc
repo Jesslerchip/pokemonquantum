@@ -16,7 +16,6 @@ OldaleTown_OnTransition:
 
 @ This script seems pointless because nothing uses VAR_OLDALE_TOWN_STATE
 OldaleTown_EventScript_SetOldaleState::
-	setvar VAR_OLDALE_TOWN_STATE, 1
 	return
 
 OldaleTown_EventScript_BlockWestEntrance::
@@ -280,7 +279,6 @@ OldaleTown_EventScript_RivalFinish::
 	applymovement LOCALID_RIVAL, OldaleTown_Movement_RivalExit
 	waitmovement 0
 	removeobject LOCALID_RIVAL
-	setvar VAR_OLDALE_RIVAL_STATE, 2
 	setflag FLAG_HIDE_OLDALE_TOWN_RIVAL
 	releaseall
 	end
@@ -399,3 +397,269 @@ OldaleTown_Text_TownSign:
 	.string "OLDALE TOWN\n"
 	.string "“Where things start off scarce.”$"
 
+TaprootTown_EventScript_TownSign::
+	lockall
+	msgbox TaprootTown_EventScript_TownSign_Text_0
+	releaseall
+	return
+
+
+TaprootTown_EventScript_LockedDoor::
+	lockall
+	msgbox TaprootTown_EventScript_LockedDoor_Text_0
+	releaseall
+	return
+
+
+TaprootTown_EventScript_OldMan::
+	lock
+	faceplayer
+	msgbox TaprootTown_EventScript_OldMan_Text_0
+	release
+	return
+
+
+TaprootTown_EventScript_Woman::
+	lock
+	faceplayer
+	msgbox TaprootTown_EventScript_Woman_Text_0
+	release
+	return
+
+
+TaprootTown_EventScript_Boy::
+	lock
+	faceplayer
+	msgbox TaprootTown_EventScript_Boy_Text_0
+	release
+	return
+
+
+TaprootTown_EventScript_Fisherman::
+	lock
+	faceplayer
+	goto_if_unset FLAG_RECEIVED_OLD_ROD, TaprootTown_EventScript_Fisherman_2
+	msgbox TaprootTown_EventScript_Fisherman_Text_1
+TaprootTown_EventScript_Fisherman_1:
+	release
+	return
+
+TaprootTown_EventScript_Fisherman_2:
+	msgbox TaprootTown_EventScript_Fisherman_Text_0
+	giveitem ITEM_OLD_ROD
+	setflag FLAG_RECEIVED_OLD_ROD
+	goto TaprootTown_EventScript_Fisherman_1
+
+
+TaprootTown_EventScript_ItemTM63::
+	finditem ITEM_TM63
+	return
+
+
+TaprootTown_EventScript_VilderTrigger1::
+	lockall
+	playse SE_PIN
+	applymovement 6, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_RG_ENCOUNTER_DEOXYS, 1
+	applymovement 6, Common_Movement_WalkInPlaceUp
+	waitmovement 0
+	msgbox TaprootTown_EventScript_VilderTrigger1_Text_0
+	closemessage
+	applymovement 6, TaprootTown_Movement_VilderMovementTrigger1
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight
+	waitmovement 0
+	msgbox TaprootTown_EventScript_VilderTrigger1_Text_1
+	trainerbattle_no_intro TRAINER_VILDER_1, TaprootTown_Text_VilderDefeated
+	goto TaprootTown_EventScript_AfterVilderBattle
+	return
+
+
+TaprootTown_EventScript_VilderTrigger2::
+	lockall
+	playse SE_PIN
+	applymovement 6, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_RG_ENCOUNTER_DEOXYS, 1
+	applymovement 6, Common_Movement_WalkInPlaceUp
+	waitmovement 0
+	msgbox TaprootTown_EventScript_VilderTrigger1_Text_0
+	closemessage
+	applymovement 6, TaprootTown_Movement_VilderMovementTrigger2
+	waitmovement 0
+	msgbox TaprootTown_EventScript_VilderTrigger1_Text_1
+	trainerbattle_no_intro TRAINER_VILDER_1, TaprootTown_Text_VilderDefeated
+	goto TaprootTown_EventScript_AfterVilderBattle
+	return
+
+
+TaprootTown_EventScript_VilderTrigger3::
+	lockall
+	playse SE_PIN
+	applymovement 6, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_RG_ENCOUNTER_DEOXYS, 1
+	applymovement 6, Common_Movement_WalkInPlaceUp
+	waitmovement 0
+	msgbox TaprootTown_EventScript_VilderTrigger1_Text_0
+	closemessage
+	applymovement 6, TaprootTown_Movement_VilderMovementTrigger3
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
+	waitmovement 0
+	msgbox TaprootTown_EventScript_VilderTrigger1_Text_1
+	trainerbattle_no_intro TRAINER_VILDER_1, TaprootTown_Text_VilderDefeated
+	goto TaprootTown_EventScript_AfterVilderBattle
+	return
+
+
+TaprootTown_EventScript_AfterVilderBattle::
+	msgbox TaprootTown_EventScript_AfterVilderBattle_Text_0
+	closemessage
+	applymovement 6, TaprootTown_EventScript_VilderLeaves
+	waitmovement 0
+	removeobject 6
+	setflag FLAG_HIDE_TAPROOT_TOWN_VILDER
+	setvar VAR_TAPROOT_TOWN_STATE, 1
+	fadedefaultbgm
+	completesubquest QUEST_A_SPOOKY_START, SUB_QUEST_3
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME, QUEST_A_SPOOKY_START
+	call QuestUpdated
+	closemessage
+	releaseall
+	return
+
+
+TaprootTown_Movement_VilderMovementTrigger1:
+	walk_up
+	walk_up
+	walk_in_place_left
+	step_end
+
+TaprootTown_Movement_VilderMovementTrigger2:
+	walk_up
+	walk_in_place_up
+	step_end
+
+TaprootTown_Movement_VilderMovementTrigger3:
+	walk_up
+	walk_up
+	walk_in_place_right
+	step_end
+
+TaprootTown_EventScript_VilderLeaves:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+TaprootTown_EventScript_TownSign_Text_0:
+	.string "Taproot Town\p"
+	.string "“The cozy retreat for Trainers and\n"
+	.string "travelers alike!”$"
+
+TaprootTown_EventScript_LockedDoor_Text_0:
+	.string "The building is locked.\p"
+	.string "A sign reads: “Keep out! -- Team\n"
+	.string "Quantum”$"
+
+TaprootTown_EventScript_OldMan_Text_0:
+	.string "Taproot Town is usually a very peaceful\n"
+	.string "place. Tourists come here often.\p"
+	.string "Lately, however, there have been some\n"
+	.string "shifty characters coming through.\l"
+	.string "Some of them are from this thing called\l"
+	.string "Cipher, and there's others from a group\l"
+	.string "called Team Quantum.\p"
+	.string "I'm not sure what they're trying to\n"
+	.string "accomplish, but they'd better stop\l"
+	.string "ransacking our peaceful little home!$"
+
+TaprootTown_EventScript_Woman_Text_0:
+	.string "Did you hear about those artifically\n"
+	.string "aggressive Pokémon?\p"
+	.string "That Cipher organization has started\n"
+	.string "testing them out. I think it's cruel.$"
+
+TaprootTown_EventScript_Boy_Text_0:
+	.string "I used to live in that house over there,\n"
+	.string "but that nasty Team Quantum gang\l"
+	.string "completely trashed it. Now I've moved\l"
+	.string "in with my neighbors.$"
+
+TaprootTown_EventScript_Fisherman_Text_0:
+	.string "Hey, do you like to fish?\p"
+	.string "Yes!\p"
+	.string "Yes, you do!\p"
+	.string "I know you do!\p"
+	.string "You definitely like to fish, don't you?\p"
+	.string "Oh, I bet you do!\p"
+	.string "Look at that look on your face!\p"
+	.string "That's the look of an onlooker that\n"
+	.string "says, “Look! I like fishing!”\p"
+	.string "Well, have I got a deal for you!\p"
+	.string "I'll give you this Old Rod.\p"
+	.string "You heard me right!\p"
+	.string "It's free!\p"
+	.string "Take it!\p"
+	.string "Hurry!\p"
+	.string "Go on, take it!\p"
+	.string "Why are you looking at me like that?\p"
+	.string "No, it's not stolen!\p"
+	.string "Just take the Old Rod!$"
+
+TaprootTown_EventScript_Fisherman_Text_1:
+	.string "You should take care of that Old Rod I\n"
+	.string "gave you!\p"
+	.string "Can you do that?\p"
+	.string "Can you?\p"
+	.string "Can you really?\p"
+	.string "I sure hope you can!\p"
+	.string "Have fun!\p"
+	.string "Fishing, that is!\p"
+	.string "For Pokémon!\p"
+	.string "You know, with that Old Rod!\p"
+	.string "The one that isn't stolen!\p"
+	.string "Quit looking at me like that!\p"
+	.string "Go fish!\p"
+	.string "Hurry!$"
+
+TaprootTown_EventScript_VilderTrigger1_Text_0:
+	.string "???: Who are you?$"
+
+TaprootTown_EventScript_VilderTrigger1_Text_1:
+	.string "???: I see. So, you're {PLAYER}. I'll\n"
+	.string "remember that.\p"
+	.string "Vilder: My name is Vilder. I'm the most\n"
+	.string "powerful Trainer in the world.\p"
+	.string "I was hoping the Rika League would\n"
+	.string "encourage serious Trainers to come out\l"
+	.string "and challenge me, but so far? The whole\l"
+	.string "thing's a joke.\p"
+	.string "With my Shadow Pokémon, nobody has a\n"
+	.string "fighting chance. Soon, the world will\l"
+	.string "know my name.\p"
+	.string "Vilder: So, you?\p"
+	.string "You're just another weakling in my way.\p"
+	.string "Let me show you just how weak you are!$"
+
+TaprootTown_EventScript_AfterVilderBattle_Text_0:
+	.string "Vilder: Interesting. But I thought…\p"
+	.string "You're lucky my Shadow Pokémon haven't\n"
+	.string "reached their full power yet,\l"
+	.string "{PLAYER}.\p"
+	.string "Still, you're not like other Trainers. I'll\n"
+	.string "be watching your progress closely.\p"
+	.string "Stay out of my way, {PLAYER}.\n"
+	.string "Consider this your only warning.$"
+
+TaprootTown_Text_VilderDefeated::
+	.string "Hmph. You're tougher than I thought.$"

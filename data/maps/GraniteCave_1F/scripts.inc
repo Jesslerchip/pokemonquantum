@@ -21,10 +21,10 @@ MtDraco_1F_EventScript_Skitty::
 	return
 
 
-MtDraco_1F_EventScript_Poochyena::
+MtDraco_1F_EventScript_Dusclops::
 	lockall
-	playmoncry SPECIES_POOCHYENA, 0
-	msgbox MtDraco_1F_EventScript_Poochyena_Text_0
+	playmoncry SPECIES_DUSCLOPS, 0
+	msgbox MtDraco_1F_EventScript_Dusclops_Text_0
 	releaseall
 	return
 
@@ -39,9 +39,9 @@ MtDraco_1F_EventScript_PeonRival::
 MtDraco_1F_EventScript_PeonBattle::
 	lockall
 	faceplayer
-	playbgm MUS_ENCOUNTER_MAGMA, 0
+	playbgm MUS_ENCOUNTER_MAGMA, 1
 	msgbox MtDraco_1F_EventScript_PeonBattle_Text_0
-	trainerbattle_no_intro TRAINER_GRUNT_MAGMA_HIDEOUT_1, MtDraco_1F_TextPeonDefeated
+	trainerbattle_no_intro TRAINER_LOGAN, MtDraco_1F_TextPeonDefeated
 	goto MtDraco_1F_EventScript_AfterPeonBattle
 	return
 
@@ -49,7 +49,6 @@ MtDraco_1F_EventScript_PeonBattle::
 MtDraco_1F_EventScript_AfterPeonBattle::
 	lockall
 	faceplayer
-	playbgm MUS_ENCOUNTER_MAGMA, 0
 	msgbox MtDraco_1F_EventScript_AfterPeonBattle_Text_0
 	closemessage
 	fadescreen FADE_TO_BLACK
@@ -70,6 +69,7 @@ MtDraco_1F_EventScript_AfterPeonBattle::
 	questmenu QUEST_MENU_SET_REWARD, QUEST_HELPING_THE_PROFESSOR
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME, QUEST_HELPING_THE_PROFESSOR
 	call QuestUpdated
+	closemessage
 	fadescreen FADE_TO_BLACK
 	playse SE_EXIT
 	setflag FLAG_HIDE_MT_DRACO_1F_OBJECTS
@@ -108,8 +108,8 @@ MtDraco_1F_EventScript_Bella_Text_0:
 MtDraco_1F_EventScript_Skitty_Text_0:
 	.string "Skitty: Skiiii!$"
 
-MtDraco_1F_EventScript_Poochyena_Text_0:
-	.string "Poochyena: Grrrr!$"
+MtDraco_1F_EventScript_Dusclops_Text_0:
+	.string "Dusclops: Brr brrrr!$"
 
 MtDraco_1F_EventScript_PeonRival_Text_0:
 	.string "Come on, Poochyena! We can take this\n"

@@ -299,7 +299,7 @@ static const struct SubQuest sSubQuests2[QUEST_A_SPOOKY_START_SUB_COUNT] =
 	      gText_SubQuest2_Name2,
 	      gText_SubQuest2_Desc2,
 	      sText_TaprootTown,
-	      OBJ_EVENT_GFX_BRANDON,
+	      OBJ_EVENT_GFX_BOY_3,
 	      OBJECT,
 	      sText_EmptyQuest
 	),

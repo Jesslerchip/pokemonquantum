@@ -48,3 +48,58 @@ PacifidlogTown_PokemonCenter_1F_Text_AncestorsLivedOnBoats:
 	.string "because they were searching for\l"
 	.string "something.$"
 
+TaprootTown_PokemonCenter_EventScript_Quantum::
+	lockall
+	faceplayer
+	msgbox TaprootTown_PokemonCenter_EventScript_Quantum_Text_0
+	releaseall
+	return
+
+
+TaprootTown_PokemonCenter_EventScript_NiceRest::
+	lockall
+	faceplayer
+	msgbox TaprootTown_PokemonCenter_EventScript_NiceRest_Text_0
+	releaseall
+	return
+
+
+TaprootTown_PokemonCenter_EventScript_RegionMap::
+	lockall
+	faceplayer
+	msgbox TaprootTown_PokemonCenter_EventScript_RegionMap_Text_0
+	releaseall
+	return
+
+
+TaprootTown_PokemonCenter_EventScript_GuyInPurple::
+	lockall
+	faceplayer
+	msgbox TaprootTown_PokemonCenter_EventScript_GuyInPurple_Text_0
+	releaseall
+	return
+
+
+TaprootTown_PokemonCenter_EventScript_Quantum_Text_0:
+	.string "Hey, have you heard of Team Quantum?\p"
+	.string "Everyone says they're going around\n"
+	.string "wreaking havoc and talking about crazy\l"
+	.string "science things. What's up with that?$"
+
+TaprootTown_PokemonCenter_EventScript_NiceRest_Text_0:
+	.string "I love coming to Taproot Town for a nice\n"
+	.string "rest. It helps my Pokémon heal up on\l"
+	.string "the way to Spectre City.$"
+
+TaprootTown_PokemonCenter_EventScript_RegionMap_Text_0:
+	.string "Have you taken a look at the region\n"
+	.string "map? It'll show you exactly where you\l"
+	.string "are in Rika.$"
+
+TaprootTown_PokemonCenter_EventScript_GuyInPurple_Text_0:
+	.string "Some guy dressed up in purple used some\n"
+	.string "super strong Pokémon on me. I have no\l"
+	.string "idea what his deal is, but he was way\l"
+	.string "more aggressive than a Trainer ought\l"
+	.string "to be. Pokémon are friends, not tools\l"
+	.string "of war!$"

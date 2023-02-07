@@ -2,15 +2,15 @@
 #define GUARD_CONSTANTS_OPPONENTS_H
 
 #define TRAINER_NONE                          0
-#define TRAINER_SAWYER_1                      1
-#define TRAINER_GRUNT_AQUA_HIDEOUT_1          2
-#define TRAINER_GRUNT_AQUA_HIDEOUT_2          3
-#define TRAINER_GRUNT_AQUA_HIDEOUT_3          4
-#define TRAINER_GRUNT_AQUA_HIDEOUT_4          5
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_1       6
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_2       7
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_3       8
-#define TRAINER_GABRIELLE_1                   9
+#define TRAINER_LOGAN                         1
+#define TRAINER_MIKE                          2
+#define TRAINER_JOHN                          3
+#define TRAINER_PAUL                          4
+#define TRAINER_TIMMY                         5
+#define TRAINER_POPPY                         6
+#define TRAINER_RICHTOR                       7
+#define TRAINER_BELLA_1                       8
+#define TRAINER_VILDER_1                      9
 #define TRAINER_GRUNT_PETALBURG_WOODS        10
 #define TRAINER_MARCEL                       11
 #define TRAINER_ALBERTO                      12
@@ -276,7 +276,7 @@
 #define TRAINER_JUAN_1                      272
 #define TRAINER_JERRY_1                     273
 #define TRAINER_TED                         274
-#define TRAINER_PAUL                        275
+#define TRAINER_PAUL2                       275
 #define TRAINER_JERRY_2                     276
 #define TRAINER_JERRY_3                     277
 #define TRAINER_JERRY_4                     278
@@ -335,7 +335,7 @@
 #define TRAINER_CALVIN_5                    331
 #define TRAINER_EDDIE                       332
 #define TRAINER_ALLEN                       333
-#define TRAINER_TIMMY                       334
+#define TRAINER_TIMMY2                      334
 #define TRAINER_WALLACE                     335
 #define TRAINER_ANDREW                      336
 #define TRAINER_IVAN                        337
@@ -449,7 +449,7 @@
 #define TRAINER_BETH                        445
 #define TRAINER_TARA                        446
 #define TRAINER_MISSY                       447
-#define TRAINER_ALICE                       448
+#define TRAINER_ALICE2                       448
 #define TRAINER_JENNY_1                     449
 #define TRAINER_GRACE                       450
 #define TRAINER_TANYA                       451

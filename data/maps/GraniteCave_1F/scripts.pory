@@ -26,10 +26,10 @@ script MtDraco_1F_EventScript_Skitty {
     releaseall
 }
 
-script MtDraco_1F_EventScript_Poochyena {
+script MtDraco_1F_EventScript_Dusclops {
     lockall
-    playmoncry(SPECIES_POOCHYENA, 0)
-    msgbox(format("Poochyena: Grrrr!"))
+    playmoncry(SPECIES_DUSCLOPS, 0)
+    msgbox(format("Dusclops: Brr brrrr!"))
     releaseall
 }
 
@@ -42,18 +42,17 @@ script MtDraco_1F_EventScript_PeonRival {
 script MtDraco_1F_EventScript_PeonBattle {
     lockall
     faceplayer
-    playbgm(MUS_ENCOUNTER_MAGMA, 0)
+    playbgm(MUS_ENCOUNTER_MAGMA, 1)
     msgbox(format("Ha! You came all the way in here for that tech we stole?\pI hate to burst your bubble, but it's "
     "not here. We already sent it off to our base with our Corviknite.\pBut since you came all this way, I might as "
     "well teach you not to mess with Cipher!"))
-    trainerbattle_no_intro(TRAINER_GRUNT_MAGMA_HIDEOUT_1, MtDraco_1F_TextPeonDefeated)
+    trainerbattle_no_intro(TRAINER_LOGAN, MtDraco_1F_TextPeonDefeated)
 	goto(MtDraco_1F_EventScript_AfterPeonBattle)
 }
 
 script MtDraco_1F_EventScript_AfterPeonBattle {
     lockall
     faceplayer
-    playbgm(MUS_ENCOUNTER_MAGMA, 0)
     msgbox(format("Tch! You'll regret messing with Cipher. Our entire organization will be notified about you!"))
     closemessage
     fadescreen(FADE_TO_BLACK)
@@ -74,6 +73,7 @@ script MtDraco_1F_EventScript_AfterPeonBattle {
     questmenu(QUEST_MENU_SET_REWARD, QUEST_HELPING_THE_PROFESSOR)
     questmenu(QUEST_MENU_BUFFER_QUEST_NAME, QUEST_HELPING_THE_PROFESSOR)
     call(QuestUpdated)
+    closemessage
     fadescreen(FADE_TO_BLACK)
     playse(SE_EXIT)
     setflag(FLAG_HIDE_MT_DRACO_1F_OBJECTS)

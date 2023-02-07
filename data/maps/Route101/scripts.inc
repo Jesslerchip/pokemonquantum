@@ -17,14 +17,14 @@ Route1_EventScript_CaveSign::
 
 
 Route1_EventScript_StatsGuy::
-	lockall
+	lock
 	faceplayer
 	msgbox Route1_EventScript_StatsGuy_Text_0, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq Route1_EventScript_StatsGuy_2
 	msgbox Route1_EventScript_StatsGuy_Text_2
 Route1_EventScript_StatsGuy_1:
-	releaseall
+	release
 	return
 
 Route1_EventScript_StatsGuy_2:
@@ -33,18 +33,18 @@ Route1_EventScript_StatsGuy_2:
 
 
 Route1_EventScript_Woman::
-	lockall
+	lock
 	faceplayer
 	msgbox Route1_EventScript_Woman_Text_0
-	releaseall
+	release
 	return
 
 
 Route1_EventScript_Youngster::
-	lockall
+	lock
 	faceplayer
 	msgbox Route1_EventScript_Youngster_Text_0
-	releaseall
+	release
 	return
 
 

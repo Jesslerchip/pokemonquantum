@@ -45,10 +45,10 @@ SpringwoodPond_EventScript_SakurasLab::
 
 
 SpringwoodPond_EventScript_WaterMan::
-	lockall
+	lock
 	faceplayer
 	msgbox SpringwoodPond_EventScript_WaterMan_Text_0
-	releaseall
+	release
 	return
 
 
@@ -60,61 +60,77 @@ SpringwoodPond_EventScript_Skitty::
 
 
 SpringwoodPond_EventScript_WomanOnBench::
-	lockall
+	lock
 	faceplayer
 	msgbox SpringwoodPond_EventScript_WomanOnBench_Text_0
-	releaseall
+	release
 	return
 
 
 SpringwoodPond_EventScript_ManOnBench::
-	lockall
+	lock
 	faceplayer
 	msgbox SpringwoodPond_EventScript_ManOnBench_Text_0
-	releaseall
+	release
 	return
 
 
 SpringwoodPond_EventScript_WomanInFlowers::
-	lockall
+	lock
 	faceplayer
 	msgbox SpringwoodPond_EventScript_WomanInFlowers_Text_0
-	releaseall
+	release
 	return
 
 
 SpringwoodPond_EventScript_Scientist::
-	lockall
+	lock
 	faceplayer
 	msgbox SpringwoodPond_EventScript_Scientist_Text_0
-	releaseall
+	release
+	return
+
+
+SpringwoodPond_EventScript_ImportantResearch::
+	lock
+	faceplayer
+	msgbox SpringwoodPond_EventScript_ImportantResearch_Text_0
+	release
 	return
 
 
 SpringwoodPond_EventScript_CipherPeon1::
-	lockall
+	lock
 	faceplayer
 	msgbox SpringwoodPond_EventScript_CipherPeon1_Text_0
-	releaseall
+	release
 	return
 
 
 SpringwoodPond_EventScript_CipherPeon2::
-	lockall
+	lock
 	faceplayer
 	msgbox SpringwoodPond_EventScript_CipherPeon2_Text_0
-	releaseall
+	release
+	return
+
+
+SpringwoodPond_EventScript_CipherPeon3::
+	lock
+	faceplayer
+	msgbox SpringwoodPond_EventScript_CipherPeon3_Text_0
+	release
 	return
 
 
 SpringwoodPond_EventScript_FatMan::
-	lockall
+	lock
 	faceplayer
 	goto_if_unset FLAG_SYS_POKEMON_GET, SpringwoodPond_EventScript_FatMan_2
 	goto_if_set FLAG_SAKURAS_LAB_CHAOS, SpringwoodPond_EventScript_FatMan_3
 	msgbox SpringwoodPond_EventScript_FatMan_Text_2
 SpringwoodPond_EventScript_FatMan_1:
-	releaseall
+	release
 	return
 
 SpringwoodPond_EventScript_FatMan_2:
@@ -127,7 +143,7 @@ SpringwoodPond_EventScript_FatMan_3:
 
 
 SpringwoodPond_EventScript_SakuraNeedsYou::
-	lockall
+	lock
 	applymovement 2, Common_Movement_JumpInPlaceDown
 	waitmovement 0
 	applymovement 2, Common_Movement_JumpInPlaceDown
@@ -137,7 +153,17 @@ SpringwoodPond_EventScript_SakuraNeedsYou::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
 	waitmovement 0
 	msgbox SpringwoodPond_EventScript_SakuraNeedsYou_Text_1
-	releaseall
+	release
+	return
+
+
+SpringwoodPond_EventScript_ItemGyaradosite::
+	finditem ITEM_GYARADOSITE
+	return
+
+
+SpringwoodPond_EventScript_ItemOranBerries::
+	finditem ITEM_ORAN_BERRY, 5
 	return
 
 
@@ -149,8 +175,8 @@ SpringwoodPond_EventScript_PlayersHouse_Text_0:
 
 SpringwoodPond_EventScript_SpringwoodPondSign_Text_0:
 	.string "Springwood Pond\p"
-	.string "Home of the famous Prof. Sakura and her\n"
-	.string "Research Institute!$"
+	.string "“Home of the famous Prof. Sakura and\n"
+	.string "her Research Institute!”$"
 
 SpringwoodPond_EventScript_BellasHouse_Text_0:
 	.string "Bella's House$"
@@ -205,14 +231,29 @@ SpringwoodPond_EventScript_Scientist_Text_0:
 	.string "Pokémon League with the strongest\l"
 	.string "Trainers in the world!$"
 
+SpringwoodPond_EventScript_ImportantResearch_Text_0:
+	.string "Why, hello! We're doing some important\n"
+	.string "research in Springrock Path.\p"
+	.string "I'm sorry, but you'll have to wait until\n"
+	.string "our team has finished collecting\l"
+	.string "samples before you can go through. It\l"
+	.string "shouldn't be too much longer.$"
+
 SpringwoodPond_EventScript_CipherPeon1_Text_0:
 	.string "Huh?\p"
-	.string "Hey, we're trying to scheme here.\n"
-	.string "Skedaddle!$"
+	.string "Hey, can't you see I'm trying to scheme\n"
+	.string "over here?\p"
+	.string "Scram, twerp!$"
 
 SpringwoodPond_EventScript_CipherPeon2_Text_0:
-	.string "Hey, punk! This doesn't concern you!\p"
-	.string "Butt out, or else!$"
+	.string "Hey, punk! Get away from me, got it?\p"
+	.string "I'm doing some important work here.\n"
+	.string "Skedaddle!$"
+
+SpringwoodPond_EventScript_CipherPeon3_Text_0:
+	.string "I'm waiting to receive a package so we\n"
+	.string "can send it back to base. Don't get in\l"
+	.string "our way, kid!$"
 
 SpringwoodPond_EventScript_FatMan_Text_0:
 	.string "Yo, {PLAYER}! Prof. Sakura was looking\n"

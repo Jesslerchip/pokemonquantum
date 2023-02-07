@@ -1,0 +1,15 @@
+mapscripts OldaleTown_House2_MapScripts {}
+
+script TaprootTown_House2_EventScript_BugCatcher {
+    lockall
+    faceplayer
+    msgbox(format("I love Bug Pokémon. They're super cool!\pThere are a lot of them on Route 3, so I go looking for them every day."))
+    releaseall
+}
+
+script TaprootTown_House2_EventScript_AromaLady {
+    lockall
+    faceplayer
+    msgbox(format("I really like Grass Pokémon.\pThey're very easy to find out Route 4, so I go out there and catch some any chance I get."))
+    releaseall
+}

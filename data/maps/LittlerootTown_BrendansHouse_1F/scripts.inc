@@ -9,8 +9,6 @@ LittlerootTown_BrendansHouse_1F_MapScripts::
 	.byte 0
 
 LittlerootTown_BrendansHouse_1F_OnLoad:
-	call_if_lt VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_SetMovingBoxes
-	call_if_set FLAG_RECEIVED_RUNNING_SHOES, LittlerootTown_BrendansHouse_1F_EventScript_CheckShowShoesManual
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_SetMovingBoxes::
@@ -26,9 +24,6 @@ LittlerootTown_BrendansHouse_1F_EventScript_ShowRunningShoesManual::
 
 LittlerootTown_BrendansHouse_1F_OnTransition:
 	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 2, Common_EventScript_SetupRivalGfxId
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs
-	call_if_eq VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToTV
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToStairs::
@@ -49,11 +44,6 @@ LittlerootTown_BrendansHouse_1F_EventScript_MoveMomToDoor::
 @ Many of the below scripts have no gender check because they assume youre in the correct house
 @ The below SS Ticket script uses Mays house state by accident(?), but theyre both set identically after the intro
 LittlerootTown_BrendansHouse_1F_OnFrame:
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 3, LittlerootTown_BrendansHouse_1F_EventScript_EnterHouseMovingIn
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 5, LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock
-	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 6, LittlerootTown_BrendansHouse_1F_EventScript_PetalburgGymReport
-	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_MAY, 1, LittlerootTown_BrendansHouse_1F_EventScript_YoureNewNeighbor
-	map_script_2 VAR_LITTLEROOT_HOUSES_STATE_MAY, 3, PlayersHouse_1F_EventScript_GetSSTicketAndSeeLatiTV
 	.2byte 0
 
 LittlerootTown_BrendansHouse_1F_EventScript_GoUpstairsToSetClock::
@@ -80,7 +70,7 @@ LittlerootTown_BrendansHouse_1F_EventScript_EnterHouseMovingIn::
 	end
 
 LittlerootTown_BrendansHouse_1F_EventScript_PetalburgGymReport::
-	lockall
+	lock
 	setvar VAR_0x8004, MALE
 	setvar VAR_0x8005, LOCALID_MOM
 	goto PlayersHouse_1F_EventScript_PetalburgGymReportMale
@@ -286,13 +276,13 @@ LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs2:
 	step_end
 
 SpringwoodPond_BellasHouse_EventScript_Bella::
-	lockall
+	lock
 	faceplayer
 	compare VAR_LITTLEROOT_INTRO_STATE, 2
 	goto_if_eq SpringwoodPond_BellasHouse_EventScript_Bella_2
 	msgbox SpringwoodPond_BellasHouse_EventScript_Bella_Text_1
 SpringwoodPond_BellasHouse_EventScript_Bella_1:
-	releaseall
+	release
 	return
 
 SpringwoodPond_BellasHouse_EventScript_Bella_2:
@@ -304,13 +294,13 @@ SpringwoodPond_BellasHouse_EventScript_Bella_2:
 
 
 SpringwoodPond_BellasHouse_EventScript_BellaMom::
-	lockall
+	lock
 	faceplayer
 	compare VAR_LITTLEROOT_INTRO_STATE, 2
 	goto_if_eq SpringwoodPond_BellasHouse_EventScript_BellaMom_2
 	msgbox SpringwoodPond_BellasHouse_EventScript_BellaMom_Text_1
 SpringwoodPond_BellasHouse_EventScript_BellaMom_1:
-	releaseall
+	release
 	return
 
 SpringwoodPond_BellasHouse_EventScript_BellaMom_2:
@@ -322,13 +312,13 @@ SpringwoodPond_BellasHouse_EventScript_BellaMom_2:
 
 
 SpringwoodPond_BellasHouse_EventScript_BellaDad::
-	lockall
+	lock
 	faceplayer
 	compare VAR_LITTLEROOT_INTRO_STATE, 2
 	goto_if_eq SpringwoodPond_BellasHouse_EventScript_BellaDad_2
 	msgbox SpringwoodPond_BellasHouse_EventScript_BellaMom_Text_1
 SpringwoodPond_BellasHouse_EventScript_BellaDad_1:
-	releaseall
+	release
 	return
 
 SpringwoodPond_BellasHouse_EventScript_BellaDad_2:
@@ -344,9 +334,10 @@ SpringwoodPond_BellasHouse_EventScript_Bella_Text_0:
 	.string "heard a lot about you from Aunt Sakura.\p"
 	.string "My parents and I just moved here to be\n"
 	.string "closer to the Research Institute.\p"
-	.string "Listen, I'd love to chat, but I have\n"
-	.string "some things to do around the house.\l"
-	.string "Stop by later, okay?$"
+	.string "Listen, I'd love to chat, but I actually\n"
+	.string "wouldn't. Could you leave me alone, now?\l"
+	.string "I was kind of in the middle of\l"
+	.string "something.$"
 
 SpringwoodPond_BellasHouse_EventScript_Bella_Text_1:
 	.string "Bella: This is a placeholder message.$"

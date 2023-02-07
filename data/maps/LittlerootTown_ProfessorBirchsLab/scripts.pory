@@ -533,7 +533,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
 	setvar VAR_BIRCH_LAB_STATE, 5
 	setflag FLAG_ADVENTURE_STARTED
-	setvar VAR_OLDALE_TOWN_STATE, 1
 	setvar VAR_LITTLEROOT_RIVAL_STATE, 4
 	setvar VAR_LITTLEROOT_TOWN_STATE, 3
 	releaseall
@@ -1043,11 +1042,14 @@ script SpringwoodPond_SakurasLab_EventScript_Dex {
 	special(EnableNationalPokedex)
 	setflag(FLAG_RECEIVED_POKEDEX_FROM_BIRCH)
 	setvar(VAR_CABLE_CLUB_TUTORIAL_STATE, 1)
-	msgbox(format("Oh, and, here! As an added bonus for helping out today, you can have this."))
+	msgbox(format("Sakura: Oh, and, here! As an added bonus for helping out today, you can have this."))
 	giveitem(ITEM_EXP_SHARE)
 	msgbox(format("Sakura: The Exp. Share is a device that I'm certain will help you along the way. You'll need to get stronger if "
-	"you want to travel far from here.\pAnyway, are you ready, {PLAYER}? Go on out there and fill that Pokédex!"))
+	"you want to travel far from here.\pAnd these…"))
 	closemessage
+	giveitem(ITEM_POKE_BALL, 5)
+	msgbox(format("Sakura: These are called Pokéballs. They capture Pokémon so you can record their data in the Pokédex.\p"
+	"Anyway, are you ready, {PLAYER}? Go on out there and fill that Pokédex!"))
 	applymovement(BELLA, Common_Movement_WalkInPlaceDown)
 	waitmovement(0)
 	msgbox(format("Bella: Isn't this cool, {PLAYER}?\pOf course, I'll finish the Pokédex way before you, but it's nice that you get to try!\p"
@@ -1056,7 +1058,10 @@ script SpringwoodPond_SakurasLab_EventScript_Dex {
 	startquest(QUEST_A_SPOOKY_START)
 	completesubquest(QUEST_A_SPOOKY_START, SUB_QUEST_1)
 	setvar(VAR_LITTLEROOT_INTRO_STATE, 6)
-	setflag(FLAG_HIDE_SPRINGWOOD_POND_SKITTY)
+	setflag(FLAG_HIDE_SPRINGWOOD_POND_RESEARCHER)
+	clearflag(FLAG_HIDE_SPRINGWOOD_POND_MART)
+	clearflag(FLAG_HIDE_ROUTE_2_RIVAL)
+	setvar(VAR_ROUTE2_STATE, 0)
 	releaseall
 }
 
@@ -1182,7 +1187,8 @@ script SpringwoodPond_SakurasLab_EventScript_RivalSawPeon {
 	waitmovement(0)
 	applymovement(SAKURA, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
-	msgbox(format("Bella: Prof. Sakura! Some guy ran off with that device you were making!\pI think they went down towards that cave on Route 1!"))
+	msgbox(format("Bella: Prof. Sakura! My Skitty came inside the house all scared and stuff, so I went out to look.\p"
+	"Some guy was running off with that device you were making! They went out towards that cave on Route 1! What should we do?"))
 	closemessage
 	applymovement(SAKURA, Common_Movement_WalkInPlaceLeft)
 	waitmovement(0)
@@ -1193,6 +1199,8 @@ script SpringwoodPond_SakurasLab_EventScript_RivalSawPeon {
 	closemessage
 	applymovement(BELLA, SpringwoodPond_SakurasLab_Movement_RivalLeaves)
 	waitmovement(0)
+	applymovement(SAKURA, Common_Movement_WalkInPlaceDown)
+	waitmovement(0)
 	playse(SE_EXIT)
 	setflag(FLAG_HIDE_SAKURAS_LAB_RIVAL)
 	removeobject(BELLA)
@@ -1200,6 +1208,7 @@ script SpringwoodPond_SakurasLab_EventScript_RivalSawPeon {
 	completesubquest(QUEST_HELPING_THE_PROFESSOR, SUB_QUEST_2)
 	questmenu(QUEST_MENU_BUFFER_QUEST_NAME, QUEST_HELPING_THE_PROFESSOR)
 	call(QuestUpdated)
+	closemessage
 	return
 }
 
@@ -1217,7 +1226,7 @@ script SpringwoodPond_SakurasLab_EventScript_Scientist1 {
 }
 
 script SpringwoodPond_SakurasLab_EventScript_Scientist2 {
-    lockall
+    lock
     faceplayer
     if (flag(FLAG_SAKURAS_LAB_CHAOS)) {
         msgbox(format("Why would they be after the Pokéball changing device?"))
@@ -1225,11 +1234,11 @@ script SpringwoodPond_SakurasLab_EventScript_Scientist2 {
     else {
         msgbox(format("Prof. Sakura is extremely brilliant. She's an inspiration to Pokémon Researchers everywhere."))
     }
-    releaseall
+    release
 }
 
 script SpringwoodPond_SakurasLab_EventScript_Scientist3 {
-    lockall
+    lock
     faceplayer
     if (flag(FLAG_SAKURAS_LAB_CHAOS)) {
         msgbox(format("I can't believe it! Someone had the nerve to steal from the Research Institute?"))
@@ -1238,18 +1247,25 @@ script SpringwoodPond_SakurasLab_EventScript_Scientist3 {
         msgbox(format("I work on organizing the Research Institute's data for Prof. Sakura.\p"
         "Things would very quickly get out of hand if she didn't have someone like me around!"))
     }    
-    releaseall
+    release
+}
+
+script SpringwoodPond_SakurasLab_EventScript_Bella {
+    lock
+    faceplayer
+    msgbox(format("Bella: Go on, get yourself over to Taproot Town!\pI'll head over in a bit. You won't make it there before me either way!"))  
+    release
 }
 
 script SpringwoodPond_SakurasLab_EventScript_Sakura {
-    lockall
+    lock
     faceplayer
     if (flag(FLAG_SYS_POKEMON_GET)) {
         if (flag(FLAG_SAKURAS_LAB_CHAOS)) {
             msgbox(format("Sakura: Go, give chase! They probably made a break for it towards the cave on Route 1!"))
         }
         else {
-            msgbox(format("Sakura: This is a placeholder."))
+            msgbox(format("Sakura: Go on, {PLAYER}! Get out there and fill that Pokédex!"))
         }    
     }
     elif(flag(FLAG_SAKURAS_LAB_CHAOS)) {
@@ -1258,7 +1274,7 @@ script SpringwoodPond_SakurasLab_EventScript_Sakura {
     else {
         msgbox(format("This should be impossible to see, but you did it. I hope you're happy."))
     }
-    releaseall
+    release
 }
 
 script SpringwoodPond_SakurasLab_EventScript_LeavingEarly {
@@ -1314,6 +1330,8 @@ script MeetSakuraPart2 {
     addobject(PEON)
     applymovement(PEON, SpringwoodPond_SakurasLab_Movement_PeonApproaches)
     waitmovement(0)
+	applymovement(SAKURA, Common_Movement_WalkInPlaceLeft)
+	waitmovement(0)
     msgbox(format("???: I'll be taking that machine. We need this technology far more than you do, Professor!"))
     closemessage
     applymovement(PEON, SpringwoodPond_SakurasLab_Movement_PeonLeaves)
