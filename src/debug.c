@@ -3226,6 +3226,8 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(PH_NURSE_SOLO) \
     X(MUS_SPRINGWOOD_POND) \
     X(MUS_VS_TRAINER_MAIN) \
+    X(MUS_TAPROOT_TOWN) \
+    X(MUS_ROUTE_1) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \
